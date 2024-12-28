@@ -45,6 +45,7 @@ export default function Login() {
         );
       } finally {
         setLoading(false);
+        window.location.href = "/";
       }
     } else {
       try {
@@ -71,13 +72,10 @@ export default function Login() {
   };
 
   return (
-    <section className="flex flex-col items-center justify-center">
-      <form
-        className={`w-full max-w-md flex  flex-col gap-4`}
-        onSubmit={handleSubmit}
-      >
+    <section className=" flex-col grid h-[90vh] w-screen place-content-center items-center justify-center">
+      <form className={` flex  flex-col gap-4 w-80`} onSubmit={handleSubmit}>
         <h1 className="text-2xl font-bold">
-          {formLogin ? "Login" : "Register"}
+          {formLogin ? "Welcome Back" : "Register"}
         </h1>
         <Label htmlFor="name">Email</Label>
         <Input

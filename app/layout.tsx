@@ -5,6 +5,7 @@ import { ThemeProvider } from "@/components/theme-provider";
 import { UserProvider } from "@/context/UserContext";
 import { Toaster } from "sonner";
 import { Krub } from "next/font/google";
+import Header from "@/components/ui/header";
 
 export const metadata: Metadata = {
   title: "Numby",
@@ -30,6 +31,7 @@ export default function RootLayout({
           <body
             className={`antialiased transition-colors duration-300 ${krub.className}`}
           >
+            <Header/>
             <Toaster position="top-center" />
             <div className="">{children}</div>
           </body>
