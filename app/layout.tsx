@@ -25,15 +25,17 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={krub.variable}> {/* Use the variable here */}
+    <html lang="en" className={krub.variable}>
+      {" "}
+      {/* Use the variable here */}
       <UserProvider>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <body
             className={`antialiased transition-colors duration-300 ${krub.className}`}
           >
-            <Header/>
+            <Header />
             <Toaster position="top-center" />
-            <div className="">{children}</div>
+            <div className="pt-20">{children}</div>
           </body>
         </ThemeProvider>
       </UserProvider>
