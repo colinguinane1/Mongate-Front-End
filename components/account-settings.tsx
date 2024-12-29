@@ -49,7 +49,7 @@ export default function AccountSettings({ user }: AccountSettingsProps) {
   return (
     <form
       onSubmit={handleSubmit}
-      className="flex-col max-w-2xl w-full  space-y-2 bg-card border p-4 rounded-xl items-center gap-4"
+      className="flex-col w-full  space-y-2 p-4 rounded-xl items-center gap-4"
     >
       <h1 className="flex items-center gap-2">
         <MdManageAccounts />

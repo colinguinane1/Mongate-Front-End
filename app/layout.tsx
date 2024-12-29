@@ -34,7 +34,7 @@ export default function RootLayout({
             className={`antialiased transition-colors duration-300 ${krub.className}`}
           >
             <Header />
-            <Toaster position="top-center" />
+            <Toaster />
             <div className="pt-20">{children}</div>
           </body>
         </ThemeProvider>
