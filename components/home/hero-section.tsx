@@ -5,7 +5,7 @@ import Link from "next/link";
 
 export default function HeroSection() {
   return (
-    <div className="md:flex relative h-[600px]  mt-80 motion-preset-blur-down-lg md:flex-row-reverse flex-col items-center justify-center gap-4 w-full max-w-6xl">
+    <div className="md:flex relative h-[600px] mt-[600px] motion-preset-blur-down-lg md:flex-row-reverse flex-col items-center justify-center gap-4 w-full max-w-6xl">
       <div className="absolute top-80 left-4 w-72 h-72 bg-primary rounded-full mix-blend-multiply filter blur-3xl opacity-50 animate-blob "></div>
       <div className="absolute top-80 md:top-40  w-72 h-72 bg-accent rounded-full mix-blend-multiply filter blur-3xl opacity-25 animate-blob animation-delay-2000"></div>
       <div className="absolute  -bottom-8 md:right-4 top-60 w-72 h-72 bg-secondary rounded-full mix-blend-multiply filter blur-3xl opacity-25 animate-blob animation-delay-4000"></div>
