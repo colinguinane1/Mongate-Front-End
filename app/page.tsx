@@ -23,7 +23,10 @@ export default function Home() {
       <HeroSection />
       <div className="mt-20 p-4">
         {techStack.map((tech) => (
-          <div className="bg-primary/10 w-52 h-52 flex flex-col items-center justify-center rounded-lg">
+          <div
+            key={tech.name}
+            className="bg-primary/10 w-52 h-52 flex flex-col items-center justify-center rounded-lg"
+          >
             {tech.icon}
             <h1 className="font-bold  text-2xl">{tech.name}</h1>
             <p>{tech.description}</p>
