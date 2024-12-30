@@ -20,6 +20,8 @@ export default function AccountSettings({ user }: AccountSettingsProps) {
   const [changePassword, setChangePassword] = useState("");
   const [formLoading, setFormLoading] = useState(false);
   const { refetchUserData } = useUser();
+
+  const formChanged = changeUsername !== user.username || changePassword !== "";
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setFormLoading(true);
@@ -90,9 +92,11 @@ export default function AccountSettings({ user }: AccountSettingsProps) {
         </div> */}
       </div>
       <div className="flex justify-between w-full items-center">
-        <Button variant={"outline"} type="submit" disabled={formLoading}>
-          {formLoading ? <Loading /> : "Save"}
-        </Button>
+        {formChanged && (
+          <Button variant={"outline"} type="submit" disabled={formLoading}>
+            {formLoading ? <Loading /> : "Save"}
+          </Button>
+        )}
       </div>
     </form>
   );

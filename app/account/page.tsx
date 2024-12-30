@@ -81,7 +81,7 @@ export default function UserProfile() {
   return (
     <div className="flex  justify-center min-h-screen min-w-screen ">
       <div className="w-screen p-4 max-w-2xl flex-col flex space-y-4">
-        <h1 className="font-bold text-2xl text-left">Account</h1>
+        <h1 className="font-bold p-4 text-2xl text-left">Account</h1>
         <UserCard user={user} />
         <AccountSettings user={user} />
         <VerifyEmailPage />

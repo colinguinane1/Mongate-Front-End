@@ -26,6 +26,15 @@ export default function VerifyEmailPage() {
         email: user.email,
         userId: user._id,
       });
+      if (!response.data) {
+        console.error("No response data");
+        return;
+      }
+      if (response.data.error) {
+        console.error("Error sending verification email:", response.data.error);
+        toast.error(response.data.error);
+        return;
+      }
       toast.success(response.data.message);
     } catch (error) {
       if (error instanceof AxiosError && error.response) {

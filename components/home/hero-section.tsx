@@ -1,9 +1,12 @@
+"use client";
 import { OrbitingCirclesHome } from "../ui/animated-circles";
 import CAnimatedButton from "../ui/c-animated-button";
 import CAnimatedButtonOutline from "../ui/c-animated-button-outline";
 import Link from "next/link";
+import { useUser } from "@/context/UserContext";
 
 export default function HeroSection() {
+  const { user } = useUser();
   return (
     <div className="md:flex relative h-[600px] mt-[600px] motion-preset-blur-down-lg md:flex-row-reverse flex-col items-center justify-center gap-4 w-full max-w-6xl">
       <div className="absolute top-80 left-4 w-72 h-72 bg-primary rounded-full mix-blend-multiply filter blur-3xl opacity-50 animate-blob "></div>
@@ -26,12 +29,12 @@ export default function HeroSection() {
           User Authentication
         </p>
         <div className="flex gap-4 md:flex-row flex-col">
-          <Link href="/login">
+          <Link href={user ? "/account" : "/login"}>
             {" "}
-            <CAnimatedButton>Login </CAnimatedButton>
+            <CAnimatedButton>{user ? "Account" : "Login"} </CAnimatedButton>
           </Link>
 
-          <CAnimatedButtonOutline>Learn More</CAnimatedButtonOutline>
+          <CAnimatedButtonOutline>Get Started</CAnimatedButtonOutline>
         </div>
       </div>
     </div>

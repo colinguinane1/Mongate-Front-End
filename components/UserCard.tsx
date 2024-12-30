@@ -24,7 +24,7 @@ const UserCard: React.FC<UserCardProps> = ({ user }) => {
 
   return (
     <div className="flex items-center  relative  w-full max-w-2xl  p-4 rounded-xl gap-4">
-      <Avatar className="w-20 h-20 relative">
+      <Avatar className="w-20 h-20 z-0 relative">
         <AvatarFallback className="w-20 h-20 text-2xl">
           {user.username.slice(0, 2).toUpperCase()}
         </AvatarFallback>
@@ -33,10 +33,12 @@ const UserCard: React.FC<UserCardProps> = ({ user }) => {
         <p>
           <h1 className="font-bold">{user.username}</h1>
         </p>{" "}
-        <div className="flex items-center gap-1 text-sm text-gray-500">
-          {user.verified && <FaCheckCircle />}
-          <p>Verified Account</p>
-        </div>
+        {user.verified && (
+          <div className="flex items-center gap-1 text-sm text-gray-500">
+            <FaCheckCircle />
+            <p>Verified Account</p>
+          </div>
+        )}
       </div>
     </div>
   );
