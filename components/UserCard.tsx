@@ -34,7 +34,7 @@ const UserCard: React.FC<UserCardProps> = ({ user }) => {
           <h1 className="font-bold">{user.username}</h1>
         </p>{" "}
         {user.verified && (
-          <div className="flex items-center gap-1 text-sm text-gray-500">
+          <div className="flex items-center gap-1 text-sm text-primary/50">
             <FaCheckCircle />
             <p>Verified Account</p>
           </div>
