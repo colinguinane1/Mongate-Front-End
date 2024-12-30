@@ -8,7 +8,7 @@ export const FadeInSection = ({ children }: { children: React.ReactNode }) => {
   const controls = useAnimation(); // Animation controller
   const [ref, inView] = useInView({
     triggerOnce: true, // Ensures the animation happens only once
-    threshold: 0.3, // Adjust visibility threshold
+    threshold: 0.1, // Adjust visibility threshold
   });
 
   useEffect(() => {
@@ -25,7 +25,7 @@ export const FadeInSection = ({ children }: { children: React.ReactNode }) => {
       transition={{ duration: 0.5 }}
       variants={{
         visible: { opacity: 1, y: 0, scale: 1, filter: "blur(0px)" },
-        hidden: { opacity: 0, y: 40, scale: 0.6, filter: "blur(10px)" },
+        hidden: { opacity: 0, y: 15, scale: 0.5, filter: "blur(10px)" },
       }}
     >
       {children}
