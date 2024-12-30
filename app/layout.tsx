@@ -31,7 +31,7 @@ export default function RootLayout({
       <UserProvider>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <body
-            className={`antialiased transition-colors duration-300 ${krub.className}`}
+            className={`antialiased transition-colors max-w-xl  duration-300 ${krub.className}`}
           >
             <Header />
             <Toaster />
