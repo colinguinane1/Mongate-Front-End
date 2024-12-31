@@ -35,7 +35,7 @@ export default function RootLayout({
           >
             <Header />
             <Toaster />
-            <div className="">{children}</div>
+            <div className="overflow-x-hidden">{children}</div>
           </body>
         </ThemeProvider>
       </UserProvider>
