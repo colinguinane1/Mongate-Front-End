@@ -1,7 +1,10 @@
-import { FaNodeJs, FaReact } from "react-icons/fa";
+import { FaDocker, FaNodeJs, FaReact } from "react-icons/fa";
 import { DiMongodb } from "react-icons/di";
 import { SiExpress } from "react-icons/si";
 import FadeInSection from "../fade-in";
+import { BorderTrail } from "../ui/border-trail";
+import { RiNextjsFill } from "react-icons/ri";
+import { SiResend } from "react-icons/si";
 
 export default function TechStackSection() {
   const techStack = [
@@ -16,10 +19,10 @@ export default function TechStackSection() {
       description: "Unify your development with one programming language.",
     },
     {
-      name: "React",
+      name: "Next.JS",
       icon: (
-        <FaReact
-          color="teal"
+        <RiNextjsFill
+          color="gray"
           className="w-16 h-16 motion-preset-oscillate-sm"
         />
       ),
@@ -40,25 +43,38 @@ export default function TechStackSection() {
       icon: <SiExpress className="w-16 h-16 motion-preset-oscillate-sm" />,
       description: "RESTful API development made easy.",
     },
+    {
+      name: "Docker",
+      icon: <FaDocker color="cyan" className="w-16 h-16" />,
+    },
+    { name: "Resend", icon: <SiResend className="w-16 h-16" /> },
   ];
   return (
     <FadeInSection>
-      <h1 className="text-4xl mt-20  text-center font-bold ">
-        Why use this template?
-      </h1>
-      <div className=" grid grid-cols-1 z-[-1]   md:grid-cols-2 gap-4 p-4">
-        {techStack.map((tech) => (
-          <FadeInSection key={tech.name}>
-            <div className="bg-primary/10 z-[-1] motion-preset-blur-up-lg w-full p-10 h-full flex md:flex-row flex-col gap-4 items-center justify-center rounded-lg">
-              <div className="flex flex-col items-center justify-center">
-                {tech.icon}
-                <h1 className="font-bold py-4  text-2xl">{tech.name}</h1>
+      <div className="flex items-center mt-20 max-w-6xl justify-center flex-col gap-4">
+        <span className="bg-gradient-to-r text-3xl font-bold from-primary to-accent bg-clip-text text-transparent">
+          Powered By
+        </span>
+        <div className="grid grid-cols-4 grid-rows-2 z-[-1]  gap-4 p-4 pr-8 ">
+          {techStack.map((tech, idx) => (
+            <FadeInSection key={tech.name}>
+              <div className="bg-primary/10 relative z-[-1] p-10 h-full flex flex-col gap-4 items-center justify-center rounded-lg shadow-lg shadow-primary/10 border  border-primary/10">
+                <BorderTrail
+                  className="bg-gradient-to-l opacity-20 from-foreground via-accent to-secondary "
+                  delay={idx * 0.5}
+                  size={100}
+                />
+                <div className="absolute w-8  h-8 bg-foreground rounded-full mix-blend-multiply filter blur-3xl"></div>
+                <div className="flex flex-col items-center justify-center">
+                  {tech.icon}
+                  <h1 className="font-bold pt-4 text-center text-2xl">
+                    {tech.name}
+                  </h1>
+                </div>
               </div>
-
-              <p className="text-center">{tech.description}</p>
-            </div>
-          </FadeInSection>
-        ))}
+            </FadeInSection>
+          ))}
+        </div>
       </div>
     </FadeInSection>
   );

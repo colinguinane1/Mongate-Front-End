@@ -29,13 +29,13 @@ export default function RootLayout({
       {" "}
       {/* Use the variable here */}
       <UserProvider>
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+        <ThemeProvider attribute="class" defaultTheme="dark">
           <body
-            className={`antialiased transition-colors max-w-xl  duration-300 ${krub.className}`}
+            className={`antialiased  transition-colors overflow-x-hidden    duration-300 ${krub.className}`}
           >
             <Header />
             <Toaster />
-            <div className="pt-20">{children}</div>
+            <div className="">{children}</div>
           </body>
         </ThemeProvider>
       </UserProvider>
