@@ -4,8 +4,8 @@ import { ReactNode } from "react";
 
 export default function CAnimatedButton({ children }: { children: ReactNode }) {
   return (
-    <div className="flex items-center justify-center h-fit  w-40 m-2 text-white">
-      <button className="relative px-5 py-2 text-white w-40 flex items-center justify-center hover:shadow-[0_0_10px_3px_#9cce27] hover:text-black hover:scale-[1.02] active:scale-[0.98] font-bold border-2 border-primary rounded-md overflow-hidden transition-all duration-200 group">
+    <div className="flex items-center justify-center h-fit  w-40 m-2 ">
+      <button className="relative px-5 py-2 text-foreground w-40 flex items-center justify-center hover:shadow-[0_0_10px_3px_#9cce27] hover:text-background hover:scale-[1.02] active:scale-[0.98] font-bold border-2 border-primary rounded-md overflow-hidden transition-all duration-200 group">
         {/* Default Text */}
         <span className="relative  z-10 flex items-center gap-2 transition-all duration-75  l">
           {children} <ArrowRight size={15} />

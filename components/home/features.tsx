@@ -35,7 +35,7 @@ export default function WhyUseSection() {
           <div className="grid grid-cols-1  z-[-1] md:grid-cols-3 gap-6 p-4  ">
             {techStack.map((tech, idx) => (
               <FadeInSection key={tech.name}>
-                <div className="bg-primary/10 relative p-10 h-full flex flex-col gap-4 items-center justify-center rounded-lg shadow-lg shadow-primary/10 border border-primary/10 overflow-hidden">
+                <div className="bg-primary/10  relative p-10 h-full flex flex-col gap-4 items-center justify-center rounded-lg shadow-lg shadow-primary/10 border border-primary/30 overflow-hidden">
                   <div className="absolute w-16 h-16 bg-primary rounded-full mix-blend-multiply filter blur-3xl"></div>
                   <div className="flex flex-col items-center justify-center relative z-10">
                     {tech.icon}

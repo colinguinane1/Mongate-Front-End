@@ -44,7 +44,7 @@ export default function TechStackSection() {
           <div className="grid grid-cols-2 md:grid-cols-4 grid-rows-2 z-[-1]  gap-4 p-4 ">
             {techStack.map((tech, idx) => (
               <FadeInSection key={tech.name}>
-                <div className="bg-primary/10 relative z-[-1] p-10 h-full flex flex-col gap-4 items-center justify-center rounded-lg shadow-lg shadow-primary/10 border  border-primary/10">
+                <div className="bg-primary/10 relative z-[-1] p-10 h-full flex flex-col gap-4 items-center justify-center rounded-lg shadow-lg shadow-primary/10 border  border-primary/30">
                   {/* <BorderTrail
                     className="bg-gradient-to-l opacity-20 from-foreground via-accent to-secondary "
                     delay={idx * 0.5}
