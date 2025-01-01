@@ -1,11 +1,9 @@
-"use client";
 import Login from "@/components/login";
-import { useUser } from "@/context/UserContext";
+import { metadata } from "../layout";
+
+metadata.title = "Mongate | Login";
+metadata.description = "Login to your account";
 
 export default function LoginPage() {
-  const { user } = useUser();
-  if (user) {
-    window.location.href = "/account";
-  }
   return <Login />;
 }

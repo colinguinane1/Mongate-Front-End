@@ -8,8 +8,8 @@ import { Krub } from "next/font/google";
 import Header from "@/components/ui/header";
 
 export const metadata: Metadata = {
-  title: "Mongate",
-  description: "Template for the popular MERNG stack",
+  title: "Mongate | Home",
+  description: "Template for the popular MERN stack",
 };
 
 // Import the Krub font with the desired settings
