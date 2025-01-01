@@ -8,8 +8,8 @@ import { Krub } from "next/font/google";
 import Header from "@/components/ui/header";
 
 export const metadata: Metadata = {
-  title: "Numby",
-  description: "A random number guessing game!",
+  title: "Mongate",
+  description: "Template for the popular MERNG stack",
 };
 
 // Import the Krub font with the desired settings

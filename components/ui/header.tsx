@@ -5,6 +5,8 @@ import { useUser } from "@/context/UserContext";
 import LogoutButton from "../LogOutButton";
 import { HiOutlineChartBar } from "react-icons/hi";
 
+import Image from "next/image";
+
 export default function Header() {
   const { user } = useUser();
   return (
@@ -14,7 +16,7 @@ export default function Header() {
           Home
         </Link>
         <p className="font-extrabold flex items-center gap-1  text-primary">
-          <HiOutlineChartBar />
+          <Image alt="logo" width={30} height={30} src="/icon-1.png"></Image>
           Mongate
         </p>
         <Link href="/login">
