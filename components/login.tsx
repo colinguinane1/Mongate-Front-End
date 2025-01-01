@@ -45,7 +45,6 @@ export default function Login() {
         );
       } finally {
         setLoading(false);
-        window.location.href = "/";
       }
     } else {
       try {

@@ -39,7 +39,7 @@ export default function Header() {
             Mongate
           </p>
         </Link>
-        <div className="flex gap-4 items-center">
+        <div className="flex gap-2 items-center">
           <Link
             href="https://github.com/colinguinane1/Mongate-Front-End"
             target="_blank"
@@ -49,7 +49,7 @@ export default function Header() {
             </Button>
           </Link>
           <ModeToggle />
-          <Link href="/login">
+          <Link href="/account">
             {user ? (
               <LogoutButton />
             ) : (
