@@ -36,11 +36,6 @@ export default function WhyUseSection() {
             {techStack.map((tech, idx) => (
               <FadeInSection key={tech.name}>
                 <div className="bg-primary/10 relative z-[-1] p-10 h-full flex flex-col gap-4 items-center justify-center rounded-lg shadow-lg shadow-primary/10 border  border-primary/10">
-                  <BorderTrail
-                    className="bg-gradient-to-l opacity-20 from-primary via-accent to-secondary "
-                    delay={idx * 0.5}
-                    size={200}
-                  />
                   <div className="absolute w-16 h-16 bg-primary rounded-full mix-blend-multiply filter blur-3xl"></div>
                   <div className="flex flex-col items-center justify-center">
                     {tech.icon}
