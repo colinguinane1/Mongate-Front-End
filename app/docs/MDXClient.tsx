@@ -1,11 +1,10 @@
 "use client";
 
-import { MDXRemote } from "next-mdx-remote";
+import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote";
 import { useMDXComponents } from "@/mdx-components";
-import { processMDX } from "@/components/mdx/mdx-processor";
 
 type ClientMDXContentProps = {
-  mdxContent: any; // Serialized MDX content passed from the server
+  mdxContent: MDXRemoteSerializeResult; // Serialized MDX content passed from the server
 };
 
 export default function ClientMDXContent({

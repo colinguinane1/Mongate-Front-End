@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Doc, formatDate, getDocs } from "@/lib/gett-docs";
+import { Doc, getDocs } from "@/lib/gett-docs";
 
 export const metadata = {
   title: "Blog",
@@ -7,7 +7,7 @@ export const metadata = {
 };
 
 export default async function DocsPage() {
-  let allDocs = await getDocs();
+  const allDocs = await getDocs();
 
   return (
     <section className="mt-20 p-4">
