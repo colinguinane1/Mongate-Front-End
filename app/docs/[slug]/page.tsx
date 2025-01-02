@@ -82,11 +82,9 @@ async function getPost(slug: string): Promise<Post> {
 // Function to generate static params (this should be wrapped in an object)
 export async function generateStaticParams() {
   const files = fs.readdirSync(path.join("content", "docs"));
-  const params = files.map((filename) => ({
+  return files.map((filename) => ({
     slug: filename.replace(".mdx", ""),
   }));
-
-  return { params }; // Ensure that the return is wrapped in an object
 }
 
 // The Page function to render the post
