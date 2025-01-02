@@ -33,7 +33,7 @@ export default function WhyUseSection() {
         visible: { opacity: 1, y: 0, filter: "blur(0px)" },
       }}
       viewOptions={{ margin: "0px 0px -200px 0px" }}
-      transition={{ duration: 0.3, ease: "easeInOut" }}
+      transition={{ duration: 0.3 }}
     >
       <div className="grid place-content-center w-screen ">
         <div className="flex items-center max-w-6xl  mt-20 justify-center flex-col gap-4">
