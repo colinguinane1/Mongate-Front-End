@@ -4,17 +4,31 @@ import matter from "gray-matter"; // For parsing frontmatter
 import { serialize } from "next-mdx-remote/serialize"; // For serializing MDX content
 import { Metadata } from "next";
 import Image from "next/image";
-import ClientMDXContent from "../MDXClient"; // Assuming this is your component for rendering MDX
+import ClientMDXContent from "../MDXClient";
+import { MDXRemoteSerializeResult } from "next-mdx-remote";
 
-type Props = {
-  params: { slug: string };
+// Define the expected structure of the post
+type Post = {
+  slug: string;
+  metadata: {
+    title: string;
+    publishedAt: string;
+    category: string;
+    description: string;
+    image: string;
+    published: boolean;
+  };
+  content: MDXRemoteSerializeResult;
 };
 
-// `generateMetadata` expects `Context` type, so use `Context` instead of just `Props`
+// Define the expected parameter structure
+type Params = { slug: string };
+
+// Fixing the type for `generateMetadata`
 export async function generateMetadata({
   params,
 }: {
-  params: { slug: string };
+  params: Params;
 }): Promise<Metadata> {
   const post = await getPost(params.slug);
   return {
@@ -23,7 +37,8 @@ export async function generateMetadata({
   };
 }
 
-async function getPost(slug: string) {
+// Function to fetch the post by slug
+async function getPost(slug: string): Promise<Post> {
   try {
     const mdxPath = path.join("content", "docs", `${slug}.mdx`);
     if (!fs.existsSync(mdxPath)) {
@@ -33,7 +48,15 @@ async function getPost(slug: string) {
     const fileContent = fs.readFileSync(mdxPath, "utf-8");
 
     // Parse metadata and content using gray-matter
-    const { data: metadata, content } = matter(fileContent);
+    const { data, content } = matter(fileContent);
+    const metadata: Post["metadata"] = {
+      title: data.title || "Untitled",
+      publishedAt: data.publishedAt || "1970-01-01",
+      category: data.category || "Uncategorized",
+      description: data.description || "No description",
+      image: data.image || "/default.jpg",
+      published: data.published || false,
+    };
 
     // Serialize MDX content for rendering
     const mdxContent = await serialize(content);
@@ -56,17 +79,18 @@ async function getPost(slug: string) {
   }
 }
 
-// Ensure the correct return type for `generateStaticParams`
+// Function to generate static params (this should be wrapped in an object)
 export async function generateStaticParams() {
   const files = fs.readdirSync(path.join("content", "docs"));
   const params = files.map((filename) => ({
     slug: filename.replace(".mdx", ""),
   }));
 
-  return { params }; // Ensure the return is wrapped in an object
+  return { params }; // Ensure that the return is wrapped in an object
 }
 
-export default async function Page({ params }: { params: { slug: string } }) {
+// The Page function to render the post
+export default async function Page({ params }: { params: Params }) {
   const { slug } = params;
 
   const post = await getPost(slug);
