@@ -10,7 +10,12 @@ type Props = {
   params: { slug: string };
 };
 
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
+// `generateMetadata` expects `Context` type, so use `Context` instead of just `Props`
+export async function generateMetadata({
+  params,
+}: {
+  params: { slug: string };
+}): Promise<Metadata> {
   const post = await getPost(params.slug);
   return {
     title: post.metadata.title,
@@ -51,13 +56,14 @@ async function getPost(slug: string) {
   }
 }
 
+// Ensure the correct return type for `generateStaticParams`
 export async function generateStaticParams() {
   const files = fs.readdirSync(path.join("content", "docs"));
   const params = files.map((filename) => ({
     slug: filename.replace(".mdx", ""),
   }));
 
-  return params;
+  return { params }; // Ensure the return is wrapped in an object
 }
 
 export default async function Page({ params }: { params: { slug: string } }) {
