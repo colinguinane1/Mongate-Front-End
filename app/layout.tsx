@@ -6,6 +6,7 @@ import { UserProvider } from "@/context/UserContext";
 import { Toaster } from "sonner";
 import { Krub } from "next/font/google";
 import Header from "@/components/ui/header";
+import { Analytics } from "@vercel/analytics/react";
 
 export const metadata: Metadata = {
   title: "Mongate - The MERN Stack Template",
@@ -27,7 +28,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={krub.variable}>
       {" "}
-      {/* Use the variable here */}
+      {/* Use the variable here */} <Analytics />
       <UserProvider>
         <ThemeProvider attribute="class" defaultTheme="dark">
           <body
