@@ -60,7 +60,7 @@ export default function ScriptCopyBtn({
   };
 
   return (
-    <div className={cn(" flex max-w-md", className)}>
+    <div className={cn(" flex w-full", className)}>
       <div className="w-full space-y-2">
         <div className="mb-2 flex items-center justify-between">
           {showMultiplePackageOptions && (
@@ -119,7 +119,7 @@ export default function ScriptCopyBtn({
           <Button
             variant="outline"
             size="icon"
-            className="relative ml-2 rounded-md"
+            className="relative ml-2 w-10 h-10 px-2 rounded-md"
             onClick={copyToClipboard}
             aria-label={copied ? "Copied" : "Copy to clipboard"}
           >

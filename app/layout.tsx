@@ -8,7 +8,7 @@ import { Krub } from "next/font/google";
 import Header from "@/components/ui/header";
 
 export const metadata: Metadata = {
-  title: "Mongate | Home",
+  title: "Mongate - The MERN Stack Template",
   description: "Template for the popular MERN stack",
 };
 

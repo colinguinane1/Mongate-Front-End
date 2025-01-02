@@ -8,6 +8,7 @@ interface UserContextType {
   user: User | null;
   setUser: React.Dispatch<React.SetStateAction<User | null>>;
   refetchUserData: () => void;
+  loading: boolean;
 }
 
 const UserContext = createContext<UserContextType | undefined>(undefined);
@@ -24,16 +25,26 @@ export const UserProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
   const [user, setUser] = useState<User | null>(null);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     const token = localStorage.getItem("token");
     if (token) {
+      setUser({
+        // set user to empty while async function runs
+        email: "",
+        _id: "",
+        verified: false,
+        username: "",
+        password: "",
+      });
       fetchUserData(token);
     }
   }, []);
 
   const fetchUserData = async (token: string) => {
     try {
+      setLoading(true);
       // console.log("Fetching user data with token:", token);
       const response = await api.get("/api/auth/user", {
         headers: {
@@ -46,8 +57,11 @@ export const UserProvider: React.FC<{ children: React.ReactNode }> = ({
       }
       // console.log("Received user data:", response.data);
       setUser(response.data);
+      setLoading(false);
     } catch (error) {
       console.error("Error fetching user data:", error);
+      setUser(null);
+      setLoading(false);
       if (
         axios.isAxiosError(error) &&
         (error.response?.status === 401 || error.response?.status === 403)
@@ -64,7 +78,7 @@ export const UserProvider: React.FC<{ children: React.ReactNode }> = ({
     }
   };
   return (
-    <UserContext.Provider value={{ user, setUser, refetchUserData }}>
+    <UserContext.Provider value={{ loading, user, setUser, refetchUserData }}>
       {children}
     </UserContext.Provider>
   );

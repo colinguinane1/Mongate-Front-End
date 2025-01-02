@@ -5,6 +5,7 @@ import FadeInSection from "../fade-in";
 import { BorderTrail } from "../ui/border-trail";
 import { RiNextjsFill } from "react-icons/ri";
 import { SiResend } from "react-icons/si";
+import { InView } from "../ui/in-view";
 
 export default function TechStackSection() {
   const techStack = [
@@ -35,7 +36,14 @@ export default function TechStackSection() {
     { name: "Resend", icon: <SiResend className="w-16 h-16" /> },
   ];
   return (
-    <FadeInSection>
+    <InView
+      variants={{
+        hidden: { opacity: 0, y: 100, filter: "blur(4px)" },
+        visible: { opacity: 1, y: 0, filter: "blur(0px)" },
+      }}
+      viewOptions={{ margin: "0px 0px -200px 0px" }}
+      transition={{ duration: 0.3, ease: "easeInOut" }}
+    >
       <div className="grid place-content-center w-screen ">
         <div className="flex items-center mt-20 max-w-6xl justify-center flex-col gap-4">
           <span className="bg-gradient-to-r text-3xl font-bold from-primary to-accent bg-clip-text text-transparent">
@@ -43,7 +51,20 @@ export default function TechStackSection() {
           </span>
           <div className="grid grid-cols-2 md:grid-cols-4 grid-rows-2 z-[-1]  gap-4 p-4 ">
             {techStack.map((tech, idx) => (
-              <FadeInSection key={tech.name}>
+              <InView
+                key={tech.name}
+                variants={{
+                  hidden: {
+                    opacity: 0,
+                    y: 100,
+                    filter: "blur(4px)",
+                    scale: 0.5,
+                  },
+                  visible: { opacity: 1, y: 0, filter: "blur(0px)", scale: 1 },
+                }}
+                viewOptions={{ margin: "0px 0px -200px 0px" }}
+                transition={{ duration: 0.3, ease: "easeInOut" }}
+              >
                 <div className="bg-primary/10 relative z-[-1] p-10 h-full flex flex-col gap-4 items-center justify-center rounded-lg shadow-lg shadow-primary/10 border  border-primary/30">
                   {/* <BorderTrail
                     className="bg-gradient-to-l opacity-20 from-foreground via-accent to-secondary "
@@ -58,11 +79,11 @@ export default function TechStackSection() {
                     </h1>
                   </div>
                 </div>
-              </FadeInSection>
+              </InView>
             ))}
           </div>
         </div>
       </div>
-    </FadeInSection>
+    </InView>
   );
 }
