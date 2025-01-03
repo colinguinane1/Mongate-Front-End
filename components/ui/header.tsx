@@ -16,7 +16,7 @@ export default function Header() {
   const { user } = useUser();
   const { resolvedTheme } = useTheme();
   const pathname = usePathname();
-  const isDocsPath = pathname.includes("/docs/");
+  const isDocsPath = pathname.includes("/docs");
   return (
     <header className="flex items-center justify-center fixed p-4 w-screen z-50">
       <div className="backdrop-blur-lg z-50 p-2 max-w-6xl flex w-full justify-between motion-preset-blur-down-lg items-center rounded-md border">
