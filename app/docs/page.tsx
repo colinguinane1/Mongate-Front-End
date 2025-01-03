@@ -24,7 +24,7 @@ export default function DocsPage() {
     <section className="mt-20 p-4 flex">
       <div className="border-r h-screen w-fit">
         <div>
-          <div className="flex gap-4 mx-4 items-start flex-col">
+          <div className="flex gap-4 mr-4 items-start flex-col">
             {docLinks.map((doc) => (
               <Button
                 variant={"ghost"}
