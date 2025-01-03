@@ -4,8 +4,9 @@ import dynamic from "next/dynamic";
 import { AppSidebar } from "@/components/app-sidebar";
 import { SidebarTrigger } from "@/components/ui/sidebar";
 
+// Assuming getDocs() is an async function that returns the list of docs
 export async function generateStaticParams() {
-  const docs = getDocs();
+  const docs = await getDocs(); // Await the result if getDocs is async
   return docs.map((doc) => ({
     slug: doc.slug,
   }));
@@ -17,13 +18,14 @@ export default async function DocsPage({
   params: { slug: string };
 }) {
   const { slug } = params;
-  const docs = getDocs(); // Fetch docs on the server
+  const docs = await getDocs(); // Fetch docs on the server
   const docsMetadata = docs.map((doc) => ({
     slug: doc.slug,
     title: doc.title,
     published: doc.published,
     author: doc.author,
   })); // Full metadata (including published and author)
+
   const selectedDoc = docs.find((doc) => doc.slug === slug);
 
   if (!selectedDoc) {
@@ -37,30 +39,27 @@ export default async function DocsPage({
   });
 
   return (
-    <>
-      <section className="mt-20 flex flex-col justify-center p-4">
-        {" "}
-        <div className="px-4 md:hidden">
-          <AppSidebar docsMetadata={docsMetadata} /> <SidebarTrigger />
+    <section className="mt-20 flex flex-col justify-center p-4">
+      <div className="px-4 md:hidden">
+        <AppSidebar docsMetadata={docsMetadata} />
+        <SidebarTrigger />
+      </div>
+      <div className="prose max-w-2xl">
+        <div className="p-4">
+          {/* Display Metadata */}
+          <h1 className="text-3xl font-extrabold text-primary">
+            {metadata.title}
+          </h1>
+          <p className="text-sm text-gray-500 mt-2">
+            <span className="font-medium">Published on:</span>{" "}
+            {metadata.published}
+          </p>
+          <p className="text-sm text-gray-500">
+            <span className="font-medium">Author:</span> {metadata.author}
+          </p>
         </div>
-        <div className="prose max-w-2xl">
-          {" "}
-          <div className="p-4">
-            {/* Display Metadata */}
-            <h1 className="text-3xl font-extrabold text-primary">
-              {metadata.title}
-            </h1>
-            <p className="text-sm text-gray-500 mt-2">
-              <span className="font-medium">Published on:</span>{" "}
-              {metadata.published}
-            </p>
-            <p className="text-sm text-gray-500">
-              <span className="font-medium">Author:</span> {metadata.author}
-            </p>
-          </div>
-          <DocComponent />
-        </div>
-      </section>
-    </>
+        <DocComponent />
+      </div>
+    </section>
   );
 }

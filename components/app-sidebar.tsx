@@ -44,11 +44,7 @@ export function AppSidebar({
                   <SidebarMenuButton asChild>
                     <Link href={`/docs/${doc.slug}`}>
                       <div>
-                        <p className="font-semibold">{doc.title}</p>
-
-                        <p className="text-xs text-gray-500">
-                          Author: {doc.author}
-                        </p>
+                        <p className="font-semibold capitalize">{doc.title}</p>
                       </div>
                     </Link>
                   </SidebarMenuButton>
