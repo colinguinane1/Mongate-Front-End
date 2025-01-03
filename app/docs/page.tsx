@@ -31,7 +31,7 @@ export default function DocsPage() {
                 key={doc.slug}
                 className={` hover:text-primary hover:bg-primary/10 rounded-md  w-full  ${
                   selectedDoc === doc.slug
-                    ? "border rounded-md bg-primary/10 border-primary text-primary"
+                    ? "border-l-2 rounded-md bg-primary/10 border-primary text-primary/50"
                     : ""
                 }`}
                 onClick={() => setSelectedDoc(doc.slug)}
