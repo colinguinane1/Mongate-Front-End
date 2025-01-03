@@ -42,7 +42,7 @@ export default function DocsPage() {
           </div>
         </div>
       </div>
-      <div className="prose">
+      <div className="">
         {docLinks.find((doc) => doc.slug === selectedDoc)?.content}
       </div>
     </section>

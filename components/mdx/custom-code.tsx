@@ -2,9 +2,10 @@
 
 import { Check, Clipboard } from "lucide-react";
 import React, { useRef, useState } from "react";
+import { cn } from "@/lib/utils";
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-const Code = (props: any) => {
+const Code = (props: any, className: any) => {
   const [copied, setCopied] = useState(false);
   const codeRef = useRef<HTMLPreElement>(null);
 
@@ -19,7 +20,9 @@ const Code = (props: any) => {
   };
 
   return (
-    <div className="relative rounded-md border bg-card/50 h-fit">
+    <div
+      className={cn("relative rounded-md border bg-card/50 h-fit", className)}
+    >
       {/* Code block with copy button */}
       <div className="flex absolute right-2 top-[5px] justify-between items-center">
         <button
