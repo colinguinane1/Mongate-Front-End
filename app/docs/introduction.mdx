@@ -1,9 +1,52 @@
 import MdxLayout from "@/components/mdx/mdx-layout.tsx"
- 
-# Introduction
 
-Hello welcome to the Introduction
 
+
+# Introduction to the MERN Stack Template
+
+Welcome to the **MERN Stack Template**, a boilerplate designed to help you quickly build web applications using MongoDB, Express.js, React, and Node.js. This template provides a ready-to-use setup with essential features like authentication, database integration, and API routing.
+
+---
+
+## Prerequisites
+
+Before getting started, make sure you have the following installed on your system:
+
+- [Node.js](https://nodejs.org) (v16 or higher)
+- [npm](https://www.npmjs.com/) or [yarn](https://yarnpkg.com/)
+- [MongoDB](https://www.mongodb.com/try/download/community)
+
+---
+
+## Features
+
+- **Backend**: A robust Express.js server with MongoDB as the database.
+- **Frontend**: React with Vite or Create React App (CRA).
+- **Authentication**: Pre-configured with JWT authentication.
+- **Environment Configuration**: `.env` support for managing sensitive keys.
+- **Folder Structure**: Clean and scalable architecture.
+
+---
+
+## Folder Structure
+
+```plaintext
+mern-stack-template/
+├── backend/          # Node.js + Express.js API
+│   ├── models/       # Mongoose schemas
+│   ├── routes/       # API routes
+│   ├── controllers/  # Route handlers
+│   ├── config/       # Configuration files (e.g., DB connection)
+│   └── server.js     # Entry point for the backend
+├── frontend/         # React frontend
+│   ├── src/
+│   │   ├── components/  # Reusable React components
+│   │   ├── pages/       # Page components
+│   │   └── App.js       # Main React component
+├── .env              # Environment variables
+├── package.json      # Dependencies
+└── README.md         # Documentation
+```
 export default function MDXPage({ children }) {
   return <MdxLayout>{children}</MdxLayout>
 
