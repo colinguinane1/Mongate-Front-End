@@ -6,6 +6,8 @@ import { UserProvider } from "@/context/UserContext";
 import { Toaster } from "sonner";
 import { Krub } from "next/font/google";
 import Header from "@/components/ui/header";
+import { AppSidebar } from "@/components/app-sidebar";
+import { SidebarTrigger, SidebarProvider } from "@/components/ui/sidebar";
 
 export const metadata: Metadata = {
   title: "Mongate - The MERN Stack Template",
@@ -28,17 +30,23 @@ export default function RootLayout({
     <html lang="en" className={krub.variable}>
       {" "}
       {/* Use the variable here */}
-      <UserProvider>
-        <ThemeProvider attribute="class" defaultTheme="dark">
-          <body
-            className={`antialiased  transition-colors overflow-x-hidden    duration-300 ${krub.className}`}
-          >
-            <Header />
-            <Toaster />
-            <div className="overflow-x-hidden">{children}</div>
-          </body>
-        </ThemeProvider>
-      </UserProvider>
+      <SidebarProvider>
+        <AppSidebar />
+        <UserProvider>
+          <ThemeProvider attribute="class" defaultTheme="dark">
+            <body
+              className={`antialiased  transition-colors overflow-x-hidden    duration-300 ${krub.className}`}
+            >
+              <Header />
+              <Toaster />
+              <div className="overflow-x-hidden">
+                <SidebarTrigger />
+                {children}
+              </div>
+            </body>
+          </ThemeProvider>
+        </UserProvider>
+      </SidebarProvider>
     </html>
   );
 }
