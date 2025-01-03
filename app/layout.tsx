@@ -31,7 +31,6 @@ export default function RootLayout({
       {" "}
       {/* Use the variable here */}
       <SidebarProvider>
-        <AppSidebar />
         <UserProvider>
           <ThemeProvider attribute="class" defaultTheme="dark">
             <body
@@ -39,10 +38,7 @@ export default function RootLayout({
             >
               <Header />
               <Toaster />
-              <div className="overflow-x-hidden">
-                <SidebarTrigger />
-                {children}
-              </div>
+              <div className="overflow-x-hidden">{children}</div>
             </body>
           </ThemeProvider>
         </UserProvider>

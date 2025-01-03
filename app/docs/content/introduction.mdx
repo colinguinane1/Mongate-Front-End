@@ -1,8 +1,9 @@
-import MdxLayout from "@/components/mdx/mdx-layout.tsx"
-
-
-
-# Introduction to the MERN Stack Template
+export const metadata = {
+  title: "Introduction to Mongate",
+  published: "2025-01-03",
+  author: "Colin",
+};
+import MdxLayout from "@/components/mdx/mdx-layout.tsx";
 
 Welcome to the **MERN Stack Template**, a boilerplate designed to help you quickly build web applications using MongoDB, Express.js, React, and Node.js. This template provides a ready-to-use setup with essential features like authentication, database integration, and API routing.
 
@@ -47,6 +48,7 @@ mern-stack-template/
 ├── package.json      # Dependencies
 └── README.md         # Documentation
 ```
+
 export default function MDXPage({ children }) {
   return <MdxLayout>{children}</MdxLayout>
 

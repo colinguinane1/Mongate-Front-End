@@ -1,20 +1,63 @@
+"use client";
 import {
   Sidebar,
   SidebarContent,
-  SidebarFooter,
   SidebarGroup,
-  SidebarHeader,
+  SidebarGroupContent,
+  SidebarGroupLabel,
+  SidebarMenu,
+  SidebarMenuButton,
+  SidebarMenuItem,
 } from "@/components/ui/sidebar";
+import Link from "next/link";
+import { useIsMobile } from "@/hooks/is-mobile";
 
-export function AppSidebar() {
+export function AppSidebar({
+  docsMetadata,
+}: {
+  docsMetadata: {
+    slug: string;
+    title: string;
+    published: string;
+    author: string;
+  }[]; // Full metadata
+}) {
+  if (!useIsMobile()) {
+    return null;
+  }
+
   return (
-    <Sidebar>
-      <SidebarHeader />
+    <Sidebar variant="floating" className="z-50">
       <SidebarContent>
-        <SidebarGroup />
-        <SidebarGroup />
+        <SidebarGroup>
+          <SidebarGroupLabel>
+            <p className="font-extrabold text-base flex items-center">
+              Mongate <span className="font-light pl-1">Docs</span>
+            </p>
+          </SidebarGroupLabel>
+
+          <SidebarGroupContent>
+            <SidebarMenu>
+              {/* Iterate over docsMetadata and display all metadata */}
+              {docsMetadata.map((doc) => (
+                <SidebarMenuItem key={doc.slug}>
+                  <SidebarMenuButton asChild>
+                    <Link href={`/docs/${doc.slug}`}>
+                      <div>
+                        <p className="font-semibold">{doc.title}</p>
+
+                        <p className="text-xs text-gray-500">
+                          Author: {doc.author}
+                        </p>
+                      </div>
+                    </Link>
+                  </SidebarMenuButton>
+                </SidebarMenuItem>
+              ))}
+            </SidebarMenu>
+          </SidebarGroupContent>
+        </SidebarGroup>
       </SidebarContent>
-      <SidebarFooter />
     </Sidebar>
   );
 }
