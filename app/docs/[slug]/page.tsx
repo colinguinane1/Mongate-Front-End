@@ -113,9 +113,13 @@ export default async function DocsPage(props: {
               const prevDoc = docs[index - 1];
               const nextDoc = docs[index + 1];
               return (
-                <div className="flex justify-between w-full">
+                <div key={doc.slug} className="flex justify-between w-full">
                   {prevDoc && (
-                    <Link className="w-full" href={`/docs/${prevDoc.slug}`}>
+                    <Link
+                      key={prevDoc.slug}
+                      className="w-full"
+                      href={`/docs/${prevDoc.slug}`}
+                    >
                       <div className="flex w-full items-center">
                         <span className="mr-2">←</span>
                         <span>{prevDoc.title}</span>
@@ -123,7 +127,11 @@ export default async function DocsPage(props: {
                     </Link>
                   )}
                   {nextDoc && (
-                    <Link className="w-full" href={`/docs/${nextDoc.slug}`}>
+                    <Link
+                      key={nextDoc.slug}
+                      className="w-full"
+                      href={`/docs/${nextDoc.slug}`}
+                    >
                       <div className="flex w-full items-center justify-end">
                         <span>{nextDoc.title}</span>
                         <span className="ml-2">
