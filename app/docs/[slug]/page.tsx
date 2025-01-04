@@ -12,12 +12,11 @@ export async function generateStaticParams() {
   }));
 }
 
-export default async function DocsPage({
-  params,
-}: {
-  params: { slug: string };
+export default async function DocsPage(props: {
+  params: Promise<{ slug: string }>;
 }) {
-  const { slug } = params;
+  const { slug } = await props.params; // Await the params here
+
   const docs = await getDocs(); // Fetch docs on the server
   const docsMetadata = docs.map((doc) => ({
     slug: doc.slug,
@@ -62,4 +61,13 @@ export default async function DocsPage({
       </div>
     </section>
   );
+}
+
+export async function generateMetadata(props: {
+  params: Promise<{ slug: string }>;
+}) {
+  const { slug } = await props.params; // Await the params here
+  return {
+    title: `Docs - ${slug}`,
+  };
 }
