@@ -13,6 +13,7 @@ import {
 } from "@/components/ui/breadcrumb";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import { ChevronRight } from "lucide-react";
 
 // Assuming getDocs() is an async function that returns the list of docs
 export async function generateStaticParams() {
@@ -49,7 +50,7 @@ export default async function DocsPage(props: {
 
   return (
     <section className="mt-20 flex flex-col items-center p-4">
-      <div className="flex md:flex-row max-w-6xl">
+      <div className="flex md:flex-row flex-col max-w-6xl">
         <div className="w-fit flex-col border-r pr-4 items-start gap-4 hidden md:flex">
           <h1>Documentation</h1>
           {docs.map((doc) => (
@@ -104,6 +105,37 @@ export default async function DocsPage(props: {
             </p>
           </div>
           <DocComponent />
+        </div>
+        <div></div>
+        <div className="flex justify-between mt-8">
+          {docs.map((doc, index) => {
+            if (doc.slug === slug) {
+              const prevDoc = docs[index - 1];
+              const nextDoc = docs[index + 1];
+              return (
+                <div className="flex justify-between w-full">
+                  {prevDoc && (
+                    <Link className="w-full" href={`/docs/${prevDoc.slug}`}>
+                      <div className="flex w-full items-center">
+                        <span className="mr-2">←</span>
+                        <span>{prevDoc.title}</span>
+                      </div>
+                    </Link>
+                  )}
+                  {nextDoc && (
+                    <Link className="w-full" href={`/docs/${nextDoc.slug}`}>
+                      <div className="flex w-full items-center justify-end">
+                        <span>{nextDoc.title}</span>
+                        <span className="ml-2">
+                          <ChevronRight />
+                        </span>
+                      </div>
+                    </Link>
+                  )}
+                </div>
+              );
+            }
+          })}
         </div>
       </div>
     </section>

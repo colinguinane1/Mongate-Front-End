@@ -5,7 +5,7 @@ export const metadata = {
 };
 import MdxLayout from "@/components/mdx/mdx-layout.tsx";
 
-Welcome to the **MERN Stack Template**, a boilerplate designed to help you quickly build web applications using MongoDB, Express.js, React (NEXT.JS), and Node.js. This template provides a ready-to-use setup with essential features like authentication, database integration, and API routing.
+Welcome to **Mongate**, a template designed to help you quickly build web applications using MongoDB, Express.js, React (NEXT.JS), and Node.js. This template provides a ready-to-use setup with essential features like authentication, database integration, and API routing.
 
 ---
 
@@ -15,39 +15,55 @@ Before getting started, make sure you have the following installed on your syste
 
 - [Node.js](https://nodejs.org) (v16 or higher)
 - [npm](https://www.npmjs.com/) or [yarn](https://yarnpkg.com/)
-- [MongoDB](https://www.mongodb.com/try/download/community)
+- [MongoDB](https://www.mongodb.com/try/download/community) 
+
+You can locally install MongoDB for development, but i reccomend [Atlas](https://www.mongodb.com/products/platform/atlas-database) for production
+
 
 ---
 
 ## Features
 
 - **Backend**: A robust Express.js server with MongoDB as the database.
-- **Frontend**: React with Vite or Create React App (CRA).
-- **Authentication**: Pre-configured with JWT authentication.
-- **Environment Configuration**: `.env` support for managing sensitive keys.
-- **Folder Structure**: Clean and scalable architecture.
+- **Frontend**: React with Next.js.
 
 ---
 
-## Folder Structure
+## 1. Clone the Repository
 
-```plaintext
-mern-stack-template/
-├── backend/          # Node.js + Express.js API
-│   ├── models/       # Mongoose schemas
-│   ├── routes/       # API routes
-│   ├── controllers/  # Route handlers
-│   ├── config/       # Configuration files (e.g., DB connection)
-│   └── server.js     # Entry point for the backend
-├── frontend/         # React frontend
-│   ├── src/
-│   │   ├── components/  # Reusable React components
-│   │   ├── pages/       # Page components
-│   │   └── App.js       # Main React component
-├── .env              # Environment variables
-├── package.json      # Dependencies
-└── README.md         # Documentation
+To get started, clone the Mongate repositories to your local machine:
+
+Frontend:
+```bash
+git clone https://github.com/colinguinane1/Mongate-Front-End.git
 ```
+
+Backend:
+```bash
+git clone https://github.com/colinguinane1/Mongate-Back-End.git
+```
+
+---
+
+## 2. Install Dependencies
+
+Navigate to the project directory and install the dependencies for the frontend and backend:
+
+Frontend:
+```bash
+cd Mongate-Front-End
+npm install
+```
+
+Backend:
+```bash
+cd Mongate-Back-End
+npm install
+```
+
+---
+
+
 
 export default function MDXPage({ children }) {
   return <MdxLayout>{children}</MdxLayout>
