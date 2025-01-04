@@ -90,8 +90,8 @@ export default async function DocsPage(props: {
             </BreadcrumbList>
           </Breadcrumb>
         </div>
-        <div className="prose w-screen p-4 max-w-2xl">
-          <div className="">
+        <div className="prose w-screen max-w-2xl">
+          <div className="p-4">
             {/* Display Metadata */}
             <h1 className="text-3xl font-extrabold text-primary">
               {metadata.title}

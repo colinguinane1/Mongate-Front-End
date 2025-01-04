@@ -76,7 +76,7 @@ export default function RootLayout({
         <UserProvider>
           <ThemeProvider attribute="class" defaultTheme="dark">
             <body
-              className={`antialiased  transition-colors overflow-x-hidden    duration-300 ${krub.className}`}
+              className={`antialiased  transition-colors overflow-x-hidden bg-background   duration-300 ${krub.className}`}
             >
               <Analytics/>
               <Header />
