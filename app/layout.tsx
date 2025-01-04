@@ -70,18 +70,18 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={krub.variable}>
+    <html lang="en" className={`${krub.variable} bg-background`}>
     
       <SidebarProvider>
         <UserProvider>
           <ThemeProvider attribute="class" defaultTheme="dark">
             <body
-              className={`antialiased  transition-colors overflow-x-hidden bg-background   duration-300 ${krub.className}`}
+              className={`antialiased  transition-colors overflow-x-hidden   duration-300 ${krub.className}`}
             >
-              <Analytics/>
+            
               <Header />
               <Toaster />
-              <div className="overflow-x-hidden">{children}</div>
+              <div className="overflow-x-hidden"><Analytics/>{children}</div>
             </body>
           </ThemeProvider>
         </UserProvider>
