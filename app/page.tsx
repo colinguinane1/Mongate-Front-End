@@ -4,10 +4,6 @@ import WhyUseSection from "@/components/home/features";
 import HowDoesItWork from "@/components/home/how-does-it-work";
 import CirclePageDivider from "@/components/home/circle-page-divider";
 import GettingStarted from "../app/docs/content/01-getting-started.mdx";
-import { metadata } from "./layout";
-
-metadata.title = "Mongate | Home";
-metadata.description = "Template for the popular MERN stack";
 
 export default function Home() {
   return (

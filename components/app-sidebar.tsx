@@ -29,15 +29,13 @@ export function AppSidebar({
     author: string;
   }[]; // Full metadata
 }) {
+  const path = usePathname();
+  const { user } = useUser();
   if (!useIsMobile()) {
     return null;
   }
 
-  const path = usePathname();
-
   const currentDoc = path.split("/")[2];
-
-  const { user } = useUser();
 
   return (
     <Sidebar variant="floating" className="z-50">
