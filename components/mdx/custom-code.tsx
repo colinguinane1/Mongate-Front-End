@@ -21,20 +21,26 @@ const Code = (props: any, className: any) => {
 
   return (
     <div
-      className={cn("relative rounded-md border bg-card/50 h-fit", className)}
+      className={cn("relative rounded-md  border bg-card/50 h-fit", className)}
     >
       {/* Code block with copy button */}
       <div className="flex absolute right-2 top-[5px] justify-between items-center">
         <button
-          type="button"
-          className="text-gray-300 bg-transparent border rounded-md backdrop-blur-md p-2 hover:text-input"
+          className="relative w-[2.25rem] h-[2.25rem] border bg-transparent backdrop-blur-lg flex items-center justify-center  rounded-md"
           onClick={handleCopy}
+          aria-label={copied ? "Copied" : "Copy to clipboard"}
         >
-          {copied ? (
-            <Check className="text-green-500 w-5 h-5" />
-          ) : (
-            <Clipboard className="w-5 h-5" />
-          )}
+          <span className="sr-only">{copied ? "Copied" : "Copy"}</span>
+          <Clipboard
+            className={`h-4 w-4 transition-all duration-300 ${
+              copied ? "scale-0" : "scale-100"
+            }`}
+          />
+          <Check
+            className={`absolute inset-0 text-primary m-auto h-4 w-4 transition-all duration-300 ${
+              copied ? "scale-100" : "scale-0"
+            }`}
+          />
         </button>
       </div>
 

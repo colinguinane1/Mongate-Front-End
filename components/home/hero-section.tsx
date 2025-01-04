@@ -36,7 +36,7 @@ export default function HeroSection() {
                 {" "}
                 <CAnimatedButton>{user ? "Account" : "Login"} </CAnimatedButton>
               </Link>
-              <Link href="/docs">
+              <Link href="/docs/01-getting-started">
                 {" "}
                 <CAnimatedButtonOutline>Docs</CAnimatedButtonOutline>
               </Link>

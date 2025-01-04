@@ -1,24 +1,40 @@
-import fs from "fs";
-import path from "path";
-
-function getDocs() {
-  const contentDir = path.join(process.cwd(), "app/docs/content");
-  const files = fs.readdirSync(contentDir);
-
-  return files
-    .filter((file) => file.endsWith(".mdx"))
-    .map((file) => ({
-      slug: file.replace(".mdx", ""),
-      title: file.replace(".mdx", "").replace("-", " ").toUpperCase(),
-    }));
-}
-
+import { AppSidebar } from "@/components/app-sidebar";
+import { getDocs } from "@/lib/gett-docs";
+import { SidebarTrigger } from "@/components/ui/sidebar";
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+} from "@/components/ui/breadcrumb";
 export default function DocsListPage() {
   const docs = getDocs();
+  const docsMetadata = docs.map((doc) => ({
+    slug: doc.slug,
+    title: doc.title,
+    published: doc.published,
+    author: doc.author,
+  })); // Full metadata (including published and author)
 
   return (
     <section className="mt-20 p-4">
-      <h1 className="text-2xl font-bold mb-4">Documentation</h1>
+      <div className="px-4 md:hidden flex items-center gap-4 w-full">
+        <AppSidebar docsMetadata={docsMetadata} />
+        <SidebarTrigger />
+        <Breadcrumb>
+          <BreadcrumbList>
+            <BreadcrumbItem>
+              <BreadcrumbLink href="/">Home</BreadcrumbLink>
+            </BreadcrumbItem>
+            <BreadcrumbSeparator />
+            <BreadcrumbItem>
+              <BreadcrumbLink href="/docs">Documentation</BreadcrumbLink>
+            </BreadcrumbItem>
+          </BreadcrumbList>
+        </Breadcrumb>
+      </div>
       <ul className="list-disc pl-6">
         {docs.map((doc) => (
           <li key={doc.slug} className="mb-2">

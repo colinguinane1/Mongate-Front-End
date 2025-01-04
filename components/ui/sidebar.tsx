@@ -12,12 +12,14 @@ import { Input } from "@/components/ui/input";
 import { Separator } from "@/components/ui/separator";
 import { Sheet, SheetContent } from "@/components/ui/sheet";
 import { Skeleton } from "@/components/ui/skeleton";
+import { Squeeze as Hamburger } from "hamburger-react";
 import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
+import { Drawer, DrawerClose, DrawerContent } from "@/components/ui/drawer";
 
 const SIDEBAR_COOKIE_NAME = "sidebar:state";
 const SIDEBAR_COOKIE_MAX_AGE = 60 * 60 * 24 * 7;
@@ -194,21 +196,34 @@ const Sidebar = React.forwardRef<
 
     if (isMobile) {
       return (
-        <Sheet open={openMobile} onOpenChange={setOpenMobile} {...props}>
-          <SheetContent
+        // <Sheet open={openMobile} onOpenChange={setOpenMobile} {...props}>
+        //   <SheetContent
+        //     data-sidebar="sidebar"
+        //     data-mobile="true"
+        //     className="w-[--sidebar-width] bg-sidebar p-0 text-sidebar-foreground [&>button]:hidden"
+        //     style={
+        //       {
+        //         "--sidebar-width": SIDEBAR_WIDTH_MOBILE,
+        //       } as React.CSSProperties
+        //     }
+        //     side={side}
+        //   >
+        //     <div className="flex h-full w-full flex-col">{children}</div>
+        //   </SheetContent>
+        // </Sheet>
+        <Drawer open={openMobile} onOpenChange={setOpenMobile}>
+          <DrawerContent
             data-sidebar="sidebar"
             data-mobile="true"
-            className="w-[--sidebar-width] bg-sidebar p-0 text-sidebar-foreground [&>button]:hidden"
-            style={
-              {
-                "--sidebar-width": SIDEBAR_WIDTH_MOBILE,
-              } as React.CSSProperties
-            }
-            side={side}
+            className="w-[--sidebar-width] bg-card/50 backdrop-blur-lg p-4 text-sidebar-foreground"
           >
-            <div className="flex h-full w-full flex-col">{children}</div>
-          </SheetContent>
-        </Sheet>
+            <div className="flex h-full w-full flex-col">
+              <DrawerClose onClick={() => setOpenMobile(false)}>
+                {children}
+              </DrawerClose>
+            </div>
+          </DrawerContent>
+        </Drawer>
       );
     }
 
@@ -263,22 +278,24 @@ const SidebarTrigger = React.forwardRef<
   React.ElementRef<typeof Button>,
   React.ComponentProps<typeof Button>
 >(({ className, onClick, ...props }, ref) => {
-  const { toggleSidebar } = useSidebar();
+  const { toggleSidebar, openMobile } = useSidebar();
 
   return (
     <Button
       ref={ref}
       data-sidebar="trigger"
-      variant="ghost"
+      variant="outline"
       size="icon"
-      className={cn("h-7 w-7 z-[100]", className)}
+      className={cn("flex items-center justify-center z-[200] ", className)}
       onClick={(event) => {
         onClick?.(event);
         toggleSidebar();
       }}
       {...props}
     >
-      <PanelLeft />
+      <div>
+        <Hamburger toggled={openMobile} size={20} />
+      </div>
       <span className="sr-only">Toggle Sidebar</span>
     </Button>
   );

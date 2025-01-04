@@ -52,6 +52,7 @@ export default function Header() {
             </Button>
           </Link>
           <ModeToggle />
+
           <Link href="/account">
             {user ? (
               <LogoutButton />
