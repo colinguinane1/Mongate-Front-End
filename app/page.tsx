@@ -16,8 +16,8 @@ export default function Home() {
         </div>
         <CirclePageDivider />
         <div className="flex items-center justify-center">
-          <div className="">
-            <h1 className="font-extrabold text-4xl ">Getting Started</h1>
+          <div className="w-screen">
+            <h1 className="font-extrabold text-4xl p-4">Getting Started</h1>
             <GettingStarted />
           </div>
         </div>
