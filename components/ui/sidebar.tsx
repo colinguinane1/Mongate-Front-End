@@ -215,7 +215,7 @@ const Sidebar = React.forwardRef<
           <DrawerContent
             data-sidebar="sidebar"
             data-mobile="true"
-            className="w-[--sidebar-width] bg-card/50 backdrop-blur-lg p-4 text-sidebar-foreground"
+            className="w-[--sidebar-width] bg-card/90 backdrop-blur-lg py-2 text-sidebar-foreground"
           >
             <div className="flex h-full w-full flex-col">
               <DrawerClose onClick={() => setOpenMobile(false)}>
@@ -284,9 +284,9 @@ const SidebarTrigger = React.forwardRef<
     <Button
       ref={ref}
       data-sidebar="trigger"
-      variant="outline"
+      variant="ghost"
       size="icon"
-      className={cn("flex items-center justify-center z-[200] ", className)}
+      className={cn("flex items-center justify-center", className)}
       onClick={(event) => {
         onClick?.(event);
         toggleSidebar();

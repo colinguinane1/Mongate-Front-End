@@ -38,7 +38,7 @@ export function AppSidebar({
   const currentDoc = path.split("/")[2];
 
   return (
-    <Sidebar variant="floating" className="z-50">
+    <Sidebar variant="floating" className="z-50 ">
       <SidebarHeader>
         {" "}
         <p className="font-extrabold text-base flex items-center">
@@ -73,17 +73,6 @@ export function AppSidebar({
           </SidebarGroupContent>
         </SidebarGroup>
       </SidebarContent>
-      <SidebarFooter>
-        {user ? (
-          <div className="flex items-center gap-2">
-            <UserCard user={user} /> <LogoutButton />
-          </div>
-        ) : (
-          <Link href="/account">
-            <Button variant={"outline"}>Login</Button>
-          </Link>
-        )}
-      </SidebarFooter>
     </Sidebar>
   );
 }
