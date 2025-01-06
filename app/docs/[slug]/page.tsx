@@ -53,7 +53,7 @@ export default async function DocsPage(props: {
       <div className="flex md:flex-row w-full flex-col max-w-6xl">
         <div className="w-fit flex-col  border-r p-4 items-start gap-4 hidden md:flex">
           <h1>Documentation</h1>
-          {docs.map((doc) => (
+          {docsMetadata.map((doc) => (
             <Button key={doc.slug} variant={"ghost"} asChild>
               <Link
                 className={`${
