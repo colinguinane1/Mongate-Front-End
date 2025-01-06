@@ -64,6 +64,7 @@ export function AppSidebar({
                         <p className="font-semibold capitalize">
                           {doc.slug.replace(/-/g, " ")}
                         </p>
+<p>{doc.author}</p>
                       </div>
                     </Link>
                   </SidebarMenuButton>
