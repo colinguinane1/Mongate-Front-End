@@ -25,8 +25,8 @@ export default function Header() {
     >
       <div
         className={`backdrop-blur-[6px] z-50 p-2 max-w-6xl flex w-full ${
-          isDocsPath ? "border-b" : "border"
-        } justify-between motion-preset-blur-down-lg items-center rounded-md `}
+          isDocsPath ? "border-b" : "border rounded-close"
+        } justify-between motion-preset-blur-down-lg items-center `}
       >
         <Link href="/">
           <p className="font-extrabold flex items-center">
