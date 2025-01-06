@@ -3,7 +3,7 @@ import TechStackSection from "@/components/home/tech-stack";
 import WhyUseSection from "@/components/home/features";
 import HowDoesItWork from "@/components/home/how-does-it-work";
 import CirclePageDivider from "@/components/home/circle-page-divider";
-import GettingStarted from "../app/docs/content/01-getting-started.mdx";
+import GettingStarted from "../app/docs/content/getting-started.mdx";
 
 export default function Home() {
   return (

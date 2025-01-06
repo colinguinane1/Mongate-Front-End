@@ -18,8 +18,16 @@ export default function Header() {
   const pathname = usePathname();
   const isDocsPath = pathname.includes("/docs");
   return (
-    <header className="flex items-center justify-center fixed p-4 w-screen z-50">
-      <div className="backdrop-blur-lg z-50 p-2 max-w-6xl flex w-full justify-between motion-preset-blur-down-lg items-center rounded-md border">
+    <header
+      className={`flex transition-all duration-300 ${
+        isDocsPath ? "" : "p-4"
+      } items-center justify-center fixed  w-screen z-50`}
+    >
+      <div
+        className={`backdrop-blur-[6px] z-50 p-2 max-w-6xl flex w-full ${
+          isDocsPath ? "border-b" : "border"
+        } justify-between motion-preset-blur-down-lg items-center rounded-md `}
+      >
         <Link href="/">
           <p className="font-extrabold flex items-center">
             {resolvedTheme === "dark" ? (

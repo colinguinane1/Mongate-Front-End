@@ -30,7 +30,6 @@ export default async function DocsPage(props: {
 
   const docs = await getDocs(); // Fetch docs on the server
 
-
   const selectedDoc = docs.find((doc) => doc.slug === slug);
 
   if (!selectedDoc) {
@@ -44,7 +43,7 @@ export default async function DocsPage(props: {
   });
 
   return (
-    <section className="mt-20 flex flex-col items-center">
+    <section className="mt-16 flex flex-col items-center">
       <div className="flex md:flex-row w-full flex-col max-w-6xl">
         <div className="w-fit flex-col  border-r p-4 items-start gap-4 hidden md:flex">
           <h1>Documentation</h1>
@@ -67,8 +66,8 @@ export default async function DocsPage(props: {
           ))}
         </div>
         <div className="px-4 md:hidden flex items-center gap-4 w-full">
-          <AppSidebar docsMetadata={docs} />
-          <SidebarTrigger />
+          <AppSidebar docs={docs} />
+
           <Breadcrumb>
             <BreadcrumbList>
               <BreadcrumbItem>
@@ -93,10 +92,11 @@ export default async function DocsPage(props: {
             </h1>
             <p className="text-sm text-gray-500 mt-2">
               <span className="font-medium">Published on:</span>{" "}
-              {selectedDoc.metadata.published}
+              {selectedDoc.metadata.publishDate}
             </p>
             <p className="text-sm text-gray-500">
-              <span className="font-medium">Author:</span> {selectedDoc.metadata.author}
+              <span className="font-medium">Author:</span>{" "}
+              {selectedDoc.metadata.author}
             </p>
           </div>
           <DocComponent />{" "}
@@ -118,9 +118,9 @@ export default async function DocsPage(props: {
                           href={`/docs/${prevDoc.slug}`}
                         >
                           <div className="flex flex-col border p-2 rounded-lg w-full items-center justify-end">
-                            <span>{prevDoc.title}</span>
-                            <span className="ml-2">
-                             Prev <ChevronLeft />
+                            <span>{prevDoc.metadata.title}</span>
+                            <span className="ml-2 text-primary flex items-center ">
+                              Prev <ChevronLeft />
                             </span>
                           </div>
                         </Link>
@@ -133,8 +133,8 @@ export default async function DocsPage(props: {
                         href={`/docs/${nextDoc.slug}`}
                       >
                         <div className="flex flex-col  border p-2 rounded-lg w-full items-center justify-end">
-                          <span>{nextDoc.title}</span>
-                          <span className="ml-2">
+                          <span>{nextDoc.metadata.title}</span>
+                          <span className="ml-2 flex text-primary items-center">
                             Next <ChevronRight />
                           </span>
                         </div>

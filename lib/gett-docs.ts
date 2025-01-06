@@ -6,25 +6,14 @@ import matter from "gray-matter";
 export type Doc = {
   slug: string;
   metadata: {
+    order: number;
     title: string;
     publishDate: string;
-    category: string;
-    published: boolean;
-    description: string;
-    image: string;
-  }
-}
-
-export type Doc2 = {
-  slug: string;
-  metadata: {
-    title: string;
-    published: string;
     author: string;
   };
 };
 
-export async function getDocs(): Promise<Doc[]> {
+export async function getDocs() {
   const contentDir = path.join(process.cwd(), "app/docs/content");
   const files = fs.readdirSync(contentDir);
 
@@ -33,20 +22,39 @@ export async function getDocs(): Promise<Doc[]> {
       .filter((file) => file.endsWith(".mdx"))
       .map(async (file) => {
         const filePath = path.join(contentDir, file);
-        const { title, published, author } = await import(filePath);
+
+        // Read file content
+        const fileContent = fs.readFileSync(filePath, "utf-8");
+
+        // Extract the metadata (JS object) from the file using eval
+        const metadataMatch = fileContent.match(
+          /export\s+const\s+metadata\s*=\s*{([\s\S]*?)}/
+        );
+        const metadata = metadataMatch
+          ? eval(`({${metadataMatch[1]}})`) // Safely eval the object part of the match
+          : {};
+
+        // If there's no match, return default metadata
+        const {
+          order = 0,
+          title = file.replace(".mdx", "").replace(/-/g, " ").toUpperCase(),
+          published = "N/A",
+          author = "Unknown",
+        } = metadata;
 
         return {
           slug: file.replace(".mdx", ""),
           metadata: {
-            title: title || file.replace(".mdx", "").replace(/-/g, " ").toUpperCase(),
-            published: published || "N/A",
-            author: author || "Unknown",
+            order,
+            title,
+            author,
+            publishDate: published,
           },
         };
       })
   );
 
-  return docs;
+  return docs.sort((a, b) => a.metadata.order - b.metadata.order);
 }
 
 export function formatDate(date: string, includeRelative = false) {

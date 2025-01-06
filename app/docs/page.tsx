@@ -9,19 +9,14 @@ import {
   BreadcrumbPage,
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
-export default function DocsListPage() {
-  const docs = getDocs();
-  const docsMetadata = docs.map((doc) => ({
-    slug: doc.slug,
-    title: doc.title,
-    published: doc.published,
-    author: doc.author,
-  })); // Full metadata (including published and author)
+import Link from "next/link";
 
+export default async function DocsListPage() {
+  const docs = await getDocs();
   return (
     <section className="mt-20 p-4">
       <div className="px-4 md:hidden flex items-center gap-4 w-full">
-        <AppSidebar docsMetadata={docsMetadata} />
+        <AppSidebar docs={docs} />
         <SidebarTrigger />
         <Breadcrumb>
           <BreadcrumbList>
@@ -35,18 +30,17 @@ export default function DocsListPage() {
           </BreadcrumbList>
         </Breadcrumb>
       </div>
-      <ul className="list-disc pl-6">
-        {docs.map((doc) => (
-          <li key={doc.slug} className="mb-2">
-            <a
-              href={`/docs/${doc.slug}`}
-              className="text-primary hover:underline"
-            >
-              {doc.title}
-            </a>
-          </li>
+      <div className="flex flex-col gap-4 p-4">
+        {docs.map((doc, idx) => (
+          <Link
+            key={doc.slug}
+            href={`/docs/${doc.slug}`}
+            className={`border p-2 rounded-lg  hover:bg-primary/10 w-full  transition-all`}
+          >
+            {idx + 1}. {doc.metadata.title}
+          </Link>
         ))}
-      </ul>
+      </div>
     </section>
   );
 }
