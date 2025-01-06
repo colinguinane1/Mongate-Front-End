@@ -12,13 +12,10 @@ export type Doc = {
     published: boolean;
     description: string;
     image: string;
-  };
-};
+  }
+}
 
-import fs from "fs";
-import path from "path";
-
-export type Doc = {
+export type Doc2 = {
   slug: string;
   metadata: {
     title: string;
