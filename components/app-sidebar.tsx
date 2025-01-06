@@ -18,17 +18,11 @@ import { useUser } from "@/context/UserContext";
 import LogoutButton from "./LogOutButton";
 import { Button } from "./ui/button";
 import UserCard from "./UserCard";
+import { Doc } from "@/lib/gett-docs";
 
 export function AppSidebar({
   docsMetadata,
-}: {
-  docsMetadata: {
-    slug: string;
-    title: string;
-    published: string;
-    author: string;
-  }[]; // Full metadata
-}) {
+}:   Doc[]) {
   const path = usePathname();
   const { user } = useUser();
   if (!useIsMobile()) {
@@ -61,10 +55,10 @@ export function AppSidebar({
                       href={`/docs/${doc.slug}`}
                     >
                       <div>
-                        <p className="font-semibold capitalize">
-                          {doc.slug.replace(/-/g, " ")}
+                        <p className="font-semibold capitalize"    >  
+                                              {doc.metadata.title}
                         </p>
-<p>{doc.author}</p>
+<p>{doc.metadata.author}</p>
                       </div>
                     </Link>
                   </SidebarMenuButton>
