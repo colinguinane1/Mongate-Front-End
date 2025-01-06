@@ -15,24 +15,39 @@ export type Doc = {
   };
 };
 
-export function getDocs() {
+import fs from "fs";
+import path from "path";
+
+export type Doc = {
+  slug: string;
+  metadata: {
+    title: string;
+    published: string;
+    author: string;
+  };
+};
+
+export async function getDocs(): Promise<Doc[]> {
   const contentDir = path.join(process.cwd(), "app/docs/content");
   const files = fs.readdirSync(contentDir);
 
-  const docs = files
-    .filter((file) => file.endsWith(".mdx"))
-    .map((file) => {
-      const filePath = path.join(contentDir, file);
-      const fileContent = fs.readFileSync(filePath, "utf-8");
-      const { data } = matter(fileContent); // Parse frontmatter
+  const docs = await Promise.all(
+    files
+      .filter((file) => file.endsWith(".mdx"))
+      .map(async (file) => {
+        const filePath = path.join(contentDir, file);
+        const { title, published, author } = await import(filePath);
 
-      return {
-        slug: file.replace(".mdx", ""),
-        title: data.title || file.replace(".mdx", ""),
-        published: data.published || "N/A",
-        author: data.author || "Unknown",
-      };
-    });
+        return {
+          slug: file.replace(".mdx", ""),
+          metadata: {
+            title: title || file.replace(".mdx", "").replace(/-/g, " ").toUpperCase(),
+            published: published || "N/A",
+            author: author || "Unknown",
+          },
+        };
+      })
+  );
 
   return docs;
 }

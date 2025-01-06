@@ -29,12 +29,7 @@ export default async function DocsPage(props: {
   const { slug } = await props.params; // Await the params here
 
   const docs = await getDocs(); // Fetch docs on the server
-  const docsMetadata = docs.map((doc) => ({
-    slug: doc.slug,
-    title: doc.title,
-    published: doc.published,
-    author: doc.author,
-  })); // Full metadata (including published and author)
+
 
   const selectedDoc = docs.find((doc) => doc.slug === slug);
 
@@ -53,7 +48,7 @@ export default async function DocsPage(props: {
       <div className="flex md:flex-row w-full flex-col max-w-6xl">
         <div className="w-fit flex-col  border-r p-4 items-start gap-4 hidden md:flex">
           <h1>Documentation</h1>
-          {docsMetadata.map((doc) => (
+          {docs.map((doc) => (
             <Button key={doc.slug} variant={"ghost"} asChild>
               <Link
                 className={`${
@@ -64,7 +59,7 @@ export default async function DocsPage(props: {
               >
                 <div>
                   <p className="font-semibold capitalize">
-                    {doc.slug.replace(/-/g, " ")}
+                    {doc.metadata.title}
                   </p>
                 </div>
               </Link>
@@ -94,14 +89,14 @@ export default async function DocsPage(props: {
           <div className="p-4">
             {/* Display Metadata */}
             <h1 className="text-3xl font-extrabold text-primary">
-              {metadata.title}
+              {selectedDoc.metadata.title}
             </h1>
             <p className="text-sm text-gray-500 mt-2">
               <span className="font-medium">Published on:</span>{" "}
-              {metadata.published}
+              {selectedDoc.metadata.published}
             </p>
             <p className="text-sm text-gray-500">
-              <span className="font-medium">Author:</span> {metadata.author}
+              <span className="font-medium">Author:</span> {selectedDoc.metadata.author}
             </p>
           </div>
           <DocComponent />{" "}
@@ -125,7 +120,7 @@ export default async function DocsPage(props: {
                           <div className="flex flex-col border p-2 rounded-lg w-full items-center justify-end">
                             <span>{prevDoc.title}</span>
                             <span className="ml-2">
-                              <ChevronLeft />
+                             Prev <ChevronLeft />
                             </span>
                           </div>
                         </Link>
@@ -140,7 +135,7 @@ export default async function DocsPage(props: {
                         <div className="flex flex-col  border p-2 rounded-lg w-full items-center justify-end">
                           <span>{nextDoc.title}</span>
                           <span className="ml-2">
-                            <ChevronRight />
+                            Next <ChevronRight />
                           </span>
                         </div>
                       </Link>
