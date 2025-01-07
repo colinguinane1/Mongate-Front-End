@@ -11,6 +11,7 @@ import { FaGithub } from "react-icons/fa";
 import { ModeToggle } from "./theme-switcher";
 import { useTheme } from "next-themes";
 import { usePathname } from "next/navigation";
+import { CommandMenu } from "../command-menu";
 
 export default function Header() {
   const { user } = useUser();
@@ -50,6 +51,11 @@ export default function Header() {
             Mongate {isDocsPath && <p className="font-light pl-1">Docs</p>}
           </p>
         </Link>
+        {isDocsPath && (
+          <div>
+            <CommandMenu />
+          </div>
+        )}
         <div className="flex gap-2 items-center">
           <Link
             href="https://github.com/colinguinane1/Mongate-Front-End"
@@ -61,13 +67,15 @@ export default function Header() {
           </Link>
           <ModeToggle />
 
-          <Link href="/account">
-            {user ? (
-              <LogoutButton />
-            ) : (
-              <Button variant={"outline"}>Login</Button>
-            )}
-          </Link>
+          {!isDocsPath && (
+            <Link href="/account">
+              {user ? (
+                <LogoutButton />
+              ) : (
+                <Button variant={"outline"}>Login</Button>
+              )}
+            </Link>
+          )}
         </div>
       </div>
     </header>

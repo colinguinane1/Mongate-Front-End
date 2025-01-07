@@ -35,42 +35,6 @@ export function AppSidebar({ docs }: { docs: Doc[] }) {
   const currentDoc = path.split("/")[2];
 
   return (
-    // <Sidebar variant="floating" className="z-50 ">
-    //   <SidebarHeader>
-    //     {" "}
-    //     <p className="font-extrabold text-base flex items-center">
-    //       Mongate <span className="font-light pl-1">Docs</span>
-    //     </p>
-    //   </SidebarHeader>
-    //   <SidebarContent>
-    //     <SidebarGroup>
-    //       <SidebarGroupContent>
-    //         <SidebarMenu>
-    //           {/* Iterate over docsMetadata and display all metadata */}
-    //           {docs.map((doc) => (
-    //             <SidebarMenuItem key={doc.slug}>
-    //               <SidebarMenuButton asChild>
-    //                 <Link
-    //                   className={`${
-    //                     currentDoc === doc.slug &&
-    //                     "bg-primary/10 border-l-4 text-primary border-primary/20"
-    //                   } hover:bg-primary/10 w-full  transition-all`}
-    //                   href={`/docs/${doc.slug}`}
-    //                 >
-    //                   <div>
-    //                     <p className="font-semibold capitalize">
-    //                       {doc.metadata.title}
-    //                     </p>
-    //                   </div>
-    //                 </Link>
-    //               </SidebarMenuButton>
-    //             </SidebarMenuItem>
-    //           ))}
-    //         </SidebarMenu>
-    //       </SidebarGroupContent>
-    //     </SidebarGroup>
-    //   </SidebarContent>
-    // </Sidebar>
     <Drawer open={open} onClose={() => setOpen(false)}>
       <DrawerTrigger>
         {" "}
@@ -98,7 +62,7 @@ export function AppSidebar({ docs }: { docs: Doc[] }) {
               href={`/docs/${doc.slug}`}
             >
               <div>
-                <p className="  text-lg  capitalize">{doc.metadata.title}</p>
+                <p>{doc.metadata.title}</p>
               </div>
             </Link>
           ))}
