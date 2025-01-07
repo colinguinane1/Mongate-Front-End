@@ -70,17 +70,20 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${krub.variable} `}>
-    
       <SidebarProvider>
         <UserProvider>
           <ThemeProvider attribute="class" defaultTheme="dark">
             <body
               className={`antialiased  transition-colors overflow-x-hidden   bg-background duration-300 ${krub.className}`}
             >
-            
-              <Header />
-              <Toaster />
-              <div className="overflow-x-hidden"><Analytics/>{children}</div>
+              <div vaul-drawer-wrapper="" className="overflow-x-hidden">
+                <div className="bg-background">
+                  <Header />
+                  <Toaster />
+                  <Analytics />
+                  {children}
+                </div>
+              </div>
             </body>
           </ThemeProvider>
         </UserProvider>
