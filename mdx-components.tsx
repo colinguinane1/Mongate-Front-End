@@ -14,7 +14,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     h4: (props) => <h4 className="text-xl py-4 font-medium" {...props} />,
     h5: (props) => <h5 className="text-lg py-4 font-normal" {...props} />,
     h6: (props) => <h6 className="text-base py-4  font-light" {...props} />,
-    p: (props) => <p className="mb-b py-4" {...props} />,
+    p: (props) => <p className="mb-b text-sm py-4" {...props} />,
     li: (props) => <li className=" py-2" {...props} />,
     ul: (props) => <ul className="list-disc pl-6" {...props} />,
     ol: (props) => <ol className="list-decimal pl-6" {...props} />,
