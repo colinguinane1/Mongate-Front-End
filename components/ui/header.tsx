@@ -12,6 +12,7 @@ import { ModeToggle } from "./theme-switcher";
 import { useTheme } from "next-themes";
 import { usePathname } from "next/navigation";
 import { CommandMenu } from "../command-menu";
+import { AnimatePresence, motion } from "framer-motion";
 
 export default function Header() {
   const { user } = useUser();
@@ -51,12 +52,13 @@ export default function Header() {
             Mongate {isDocsPath && <p className="font-light pl-1">Docs</p>}
           </p>
         </Link>
-        {isDocsPath && (
-          <div>
-            <CommandMenu />
-          </div>
-        )}
-        <div className="flex gap-2 items-center">
+
+        <motion.div layout className="flex gap-2 items-center">
+          {isDocsPath && (
+            <div>
+              <CommandMenu />
+            </div>
+          )}
           <Link
             href="https://github.com/colinguinane1/Mongate-Front-End"
             target="_blank"
@@ -66,17 +68,25 @@ export default function Header() {
             </Button>
           </Link>
           <ModeToggle />
-
-          {!isDocsPath && (
-            <Link href="/account">
-              {user ? (
-                <LogoutButton />
-              ) : (
-                <Button variant={"outline"}>Login</Button>
-              )}
-            </Link>
-          )}
-        </div>
+          <AnimatePresence>
+            {!isDocsPath && (
+              <motion.div
+                layout
+                initial={{ opacity: 0, scale: 0.2, filter: "blur(40px)" }}
+                animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
+                exit={{ opacity: 0, scale: 0, filter: "blur(40px)" }}
+              >
+                <Link href="/account">
+                  {user ? (
+                    <LogoutButton />
+                  ) : (
+                    <Button variant={"outline"}>Login</Button>
+                  )}
+                </Link>
+              </motion.div>
+            )}{" "}
+          </AnimatePresence>
+        </motion.div>
       </div>
     </header>
   );
