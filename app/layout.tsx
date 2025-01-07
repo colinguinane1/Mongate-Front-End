@@ -76,8 +76,8 @@ export default function RootLayout({
             <body
               className={`antialiased  transition-colors overflow-x-hidden   bg-background duration-300 ${krub.className}`}
             >
-              <div vaul-drawer-wrapper="" className="overflow-x-hidden">
-                <div className="bg-background">
+              <div vaul-drawer-wrapper="">
+                <div className="bg-background overflow-x-hidden">
                   <Header />
                   <Toaster />
                   <Analytics />
