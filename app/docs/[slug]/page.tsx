@@ -85,10 +85,6 @@ export default async function DocsPage(props: {
         </div>
         <div className="">
           <div className="p-4">
-            {/* Display Metadata */}
-            <h1 className="text-3xl font-extrabold text-primary">
-              {selectedDoc.metadata.title}
-            </h1>
             <p className="text-sm text-gray-500 mt-2">
               <span className="font-medium">Published on:</span>{" "}
               {selectedDoc.metadata.publishDate}
@@ -97,6 +93,10 @@ export default async function DocsPage(props: {
               <span className="font-medium">Author:</span>{" "}
               {selectedDoc.metadata.author}
             </p>
+            <h1 className="text-3xl font-extrabold text-primary">
+              {selectedDoc.metadata.title}
+            </h1>
+            
           </div>
           <DocComponent />{" "}
           <div className="flex justify-between mt-8">
