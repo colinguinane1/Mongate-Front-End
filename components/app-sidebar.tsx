@@ -21,7 +21,7 @@ import UserCard from "./UserCard";
 import { Doc } from "@/lib/gett-docs";
 import { Drawer, DrawerContent, DrawerTrigger } from "./ui/drawer";
 import { cn } from "@/lib/utils";
-import Hamburger from "hamburger-react";
+import { Squeeze as Hamburger } from "hamburger-react";
 import { useState } from "react";
 
 export function AppSidebar({ docs }: { docs: Doc[] }) {
@@ -39,9 +39,9 @@ export function AppSidebar({ docs }: { docs: Doc[] }) {
       <DrawerTrigger>
         {" "}
         <Button
-          variant="ghost"
+          variant="ghostNoBg"
           size="icon"
-          className={cn("flex items-center justify-center")}
+          className={cn("flex items-center hover:bg-none justify-center")}
           onClick={() => setOpen(!open)}
         >
           <div>
@@ -50,8 +50,8 @@ export function AppSidebar({ docs }: { docs: Doc[] }) {
           <span className="sr-only">Toggle Sidebar</span>
         </Button>
       </DrawerTrigger>
-      <DrawerContent className="p-4 pb-8">
-        <div className="flex flex-col">
+      <DrawerContent className="p-4 mt-10 pb-8">
+        <div className="flex flex-col pt-4">
           {docs.map((doc) => (
             <Link
               key={doc.slug}

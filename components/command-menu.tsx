@@ -54,7 +54,7 @@ export function CommandMenu({ ...props }: DialogProps) {
   return (
     <>
       <Button
-        variant="ghost"
+        variant="ghostMuted"
         size={"icon"}
         className={cn(
           "relative    justify-center  text-base font-normal text-muted-foreground"

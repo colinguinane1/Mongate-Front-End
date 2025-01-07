@@ -66,6 +66,7 @@ export default async function DocsPage(props: {
           ))}
         </div>
         <div className="px-4 md:hidden flex items-center gap-4 w-full">
+          <AppSidebar docs={docs} />
           <Breadcrumb>
             <BreadcrumbList>
               <BreadcrumbItem>

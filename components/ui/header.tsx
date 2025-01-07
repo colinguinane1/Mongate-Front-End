@@ -53,7 +53,7 @@ export default function Header() {
           </p>
         </Link>
 
-        <motion.div layout className="flex gap-2 items-center">
+        <div className="flex gap-2 items-center">
           {isDocsPath && (
             <div>
               <CommandMenu />
@@ -63,30 +63,24 @@ export default function Header() {
             href="https://github.com/colinguinane1/Mongate-Front-End"
             target="_blank"
           >
-            <Button variant={"ghost"} size={"icon"}>
-              <FaGithub className="w-8 h-8" />
+            <Button variant={"ghostMuted"} size={"icon"}>
+              <FaGithub className="w-8 h-8 text-muted-foreground" />
             </Button>
           </Link>
           <ModeToggle />
-          <AnimatePresence>
-            {!isDocsPath && (
-              <motion.div
-                layout
-                initial={{ opacity: 0, scale: 0.2, filter: "blur(40px)" }}
-                animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
-                exit={{ opacity: 0, scale: 0, filter: "blur(40px)" }}
-              >
-                <Link href="/account">
-                  {user ? (
-                    <LogoutButton />
-                  ) : (
-                    <Button variant={"outline"}>Login</Button>
-                  )}
-                </Link>
-              </motion.div>
-            )}{" "}
-          </AnimatePresence>
-        </motion.div>
+
+          {!isDocsPath && (
+            <div>
+              <Link href="/account">
+                {user ? (
+                  <LogoutButton />
+                ) : (
+                  <Button variant={"outline"}>Login</Button>
+                )}
+              </Link>
+            </div>
+          )}
+        </div>
       </div>
     </header>
   );

@@ -20,9 +20,9 @@ export function ModeToggle() {
   return (
     <Button
       onClick={() => themeCheck()}
-      variant={"ghost"}
+      variant={"ghostMuted"}
       size="icon"
-      className="outline-none z-10"
+      className="outline-none text-muted-foreground z-10"
     >
       {resolvedTheme === "dark" ? (
         <Moon className="absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
