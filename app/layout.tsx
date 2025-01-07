@@ -72,9 +72,13 @@ export default function RootLayout({
     <html lang="en" className={`${krub.variable} `}>
       <SidebarProvider>
         <UserProvider>
-          <ThemeProvider attribute="class" defaultTheme="dark">
+          <ThemeProvider
+            disableTransitionOnChange
+            attribute="class"
+            defaultTheme="dark"
+          >
             <body
-              className={`antialiased  transition-colors overflow-x-hidden   bg-background duration-300 ${krub.className}`}
+              className={`antialiased  overflow-x-hidden   bg-background  ${krub.className}`}
             >
               <div vaul-drawer-wrapper="">
                 <div className="bg-background overflow-x-hidden">
