@@ -14,10 +14,10 @@ import Link from "next/link";
 export default async function DocsListPage() {
   const docs = await getDocs();
   return (
-    <section className="mt-20 p-4">
-      <div className="px-4 md:hidden flex items-center gap-4 w-full">
+    <section className="mt-20 w-screen p-4">
+      <div className="px-4 max-w-2xl md:hidden flex items-center gap-4 w-full">
         <AppSidebar docs={docs} />
-        <SidebarTrigger />
+        
         <Breadcrumb>
           <BreadcrumbList>
             <BreadcrumbItem>
