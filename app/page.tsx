@@ -10,7 +10,7 @@ export default function Home() {
     <div className="grid place-content-center w-screen  ">
       <div className="">
         <HeroSection />
-        <div className="relative pb-20  z-[-1]">
+        <div className="relative pb-20  z-[1]">
           <div className="bg-gradient-to-b w-screen  h-full absolute inset-0 bottom-[-1px]  top-0  from-transparent from-40% to-secondary/20"></div>
           <WhyUseSection /> <TechStackSection />
         </div>
