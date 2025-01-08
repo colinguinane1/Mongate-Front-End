@@ -201,7 +201,6 @@ const TreeIndicator = forwardRef<
 
 TreeIndicator.displayName = "TreeIndicator";
 
-// @ts-ignore
 interface FolderComponentProps
   extends React.ComponentPropsWithoutRef<typeof AccordionPrimitive.Item> {}
 
@@ -214,7 +213,12 @@ type FolderProps = {
 
 const Folder = forwardRef<
   HTMLDivElement,
-  FolderProps & React.HTMLAttributes<HTMLDivElement>
+  React.ComponentPropsWithoutRef<typeof AccordionPrimitive.Item> & {
+    expandedItems?: string[];
+    element: string;
+    isSelectable?: boolean;
+    isSelect?: boolean;
+  }
 >(
   (
     {
