@@ -5,6 +5,193 @@ export const metadata = {
   author: "Colin",
 };
 import MdxLayout from "@/components/mdx/mdx-layout.tsx";
+import { File, Folder, Tree } from "@/components/ui/file-tree.tsx";
+export const backELEMENTS = [
+  {
+    id: "1",
+    isSelectable: true,
+    name: "mongate-back-end",
+    children: [
+      {
+        id: "2",
+        isSelectable: true,
+        name: "api",
+        children: [
+          {
+            id: "3",
+            isSelectable: true,
+            name: "index.ts",
+          },
+        ],
+      },
+      {
+        id: "4",
+        isSelectable: true,
+        name: "controllers",
+        children: [
+          {
+            id: "6",
+            isSelectable: true,
+            name: "AuthController.ts",
+          },
+          {
+            id: "7",
+            isSelectable: true,
+            name: "EmailController.ts",
+          },
+        ],
+      },
+      {
+        id: "8",
+        isSelectable: true,
+        name: "middleware",
+        children: [
+          {
+            id: "9",
+            isSelectable: true,
+            name: "AuthenticateToken.ts",
+          },
+        ],
+      },
+      {
+        id: "10",
+        isSelectable: true,
+        name: "models",
+        children: [
+          {
+            id: "11",
+            isSelectable: true,
+            name: "UserModel.ts",
+          },
+        ],
+      },
+      {
+        id: "12",
+        isSelectable: true,
+        name: "routes",
+        children: [
+          {
+            id: "13",
+            isSelectable: true,
+            name: "AuthRoute.ts",
+          },
+          {
+            id: "14",
+            isSelectable: true,
+            name: "EmailRoute.ts",
+          },
+        ],
+      },
+      {
+        id: "15",
+        isSelectable: true,
+        name: "types",
+        children: [
+          {
+            id: "16",
+            isSelectable: true,
+            name: "User.ts",
+          },
+        ],
+      },
+    ],
+  },
+];
+
+export const ELEMENTS = [
+  {
+    id: "1",
+    isSelectable: false,
+    name: "mongate-front-end",
+    children: [
+      {
+        id: "2",
+        isSelectable: false,
+        name: "app",
+      },
+      {
+        id: "3",
+        isSelectable: false,
+        name: "components",
+      },
+      {
+        id: "4",
+        isSelectable: false,
+        name: "config",
+      },
+      {
+        id: "5",
+        isSelectable: false,
+        name: "content",
+      },
+      {
+        id: "6",
+        isSelectable: false,
+        name: "context",
+      },
+      {
+        id: "7",
+        isSelectable: false,
+        name: "hooks",
+      },
+      {
+        id: "8",
+        isSelectable: false,
+        name: "lib",
+      },
+      {
+        id: "9",
+        isSelectable: false,
+        name: "public",
+      },
+      {
+        id: "10",
+        isSelectable: false,
+        name: "types",
+      },
+      {
+        id: "11",
+        isSelectable: false,
+        name: "utils",
+      },
+      {
+        id: "12",
+        isSelectable: false,
+        name: ".env",
+      },
+      {
+        id: "13",
+        isSelectable: false,
+        name: ".gitignore",
+      },
+      {
+        id: "14",
+        isSelectable: false,
+        name: "components.json",
+      },
+      {
+        id: "15",
+        isSelectable: false,
+        name: "mdx-components.json",
+      },
+      {
+        id: "16",
+        isSelectable: false,
+        name: "next.config.mjs",
+      },
+      {
+        id: "17",
+        isSelectable: false,
+        name: "package-lock.json",
+      },
+      {
+        id: "18",
+        isSelectable: false,
+        name: "package.json",
+      },
+    ],
+  },
+];
 
 Welcome to **Mongate**, a template designed to help you quickly build web applications using MongoDB, Express.js, React (NEXT.JS), and Node.js. This template provides a ready-to-use setup with essential features like authentication, database integration, and API routing.
 
@@ -17,14 +204,17 @@ This guide assumes you already have Node.JS, a package manager of your choice, w
 To get started, clone the Mongate repositories to your local machine:
 
 Frontend:
+
 ```bash
 git clone https://github.com/colinguinane1/Mongate-Front-End.git
 ```
 
 Backend:
+
 ```bash
 git clone https://github.com/colinguinane1/Mongate-Back-End.git
 ```
+
 ---
 
 ## 2. Install Dependencies
@@ -32,40 +222,139 @@ git clone https://github.com/colinguinane1/Mongate-Back-End.git
 Navigate to the project directory and install the dependencies for the frontend and backend:
 
 Frontend:
+
 ```bash
 cd Mongate-Front-End
 npm install
 ```
 
 Backend:
+
 ```bash
 cd Mongate-Back-End
 npm install
 ```
- 
-You should have an app structure like this: 
 
-```plaintext
-├── backend/                           # Backend (Express, Node.js, etc.)
-│   ├── api/                           # API folder
-│   │   └── index.ts                   # API entry point (main API setup)
-│   ├── controllers/                   # Controller files (e.g., business logic)
-│   │   ├── AuthController.ts          # Auth logic (login, signup, etc.)
-│   │   └── EmailController.ts         # Email-related logic (e.g., sending emails)
-│   ├── middleware/                    # Middleware (e.g., authentication)
-│   │   └── AuthenticateToken.ts       # Token verification middleware
-│   ├── models/                        # Mongoose models or data schemas
-│   │   └── UserModel.ts               # User model/schema for MongoDB
-│   ├── routes/                        # Routes for API endpoints
-│   │   ├── AuthRoute.ts               # Routes for authentication (login, signup, etc.)
-│   │   └── EmailRoute.ts              # Routes for email-related actions
-│   ├── types/                         # TypeScript types/interfaces
-│   │   └── User.ts                    # User types/interfaces (e.g., User schema, DTOs)
-│   └── .env                           # Environment variables (e.g., DB_URI, JWT_SECRET)
-├── package.json
-└── tsconfig.json           
+You should have an app structure like this:
+
+**Back-end:**
+
+<div className="relative flex  bg-card/50 w-full flex-col items-center justify-center overflow-hidden rounded-lg border md:shadow-xl">
+  <Tree
+    className="overflow-hidden rounded-md bg-card/50 p-2"
+    initialSelectedId="1"
+    initialExpandedItems={[
+      "1",
+      "2",
+      "3",
+      "4",
+      "6",
+      "7",
+      "8",
+      "9",
+      "10",
+      "11",
+      "12",
+      "13",
+      "14",
+      "15",
+      "16",
+    ]}
+    elements={backELEMENTS}
+  >
+    <Folder element="mongate-back-end" value="1">
+      <Folder value="2" element="api">
+        <File value="3">
+          <p>index.ts</p>
+        </File>
+      </Folder>
+      <Folder value="4" element="controllers">
+        <File value="6">
+          <p>AuthController.ts</p>
+        </File>
+        <File value="7">
+          <p>EmailController.ts</p>
+        </File>
+      </Folder>
+      <Folder value="8" element="middleware">
+        <File value="9">
+          <p>AuthenticateToken.ts</p>
+        </File>
+      </Folder>
+      <Folder value="10" element="models">
+        <File value="11">
+          <p>UserModel.ts</p>
+        </File>
+      </Folder>
+      <Folder value="12" element="routes">
+        <File value="13">
+          <p>AuthRoute.ts</p>
+        </File>
+        <File value="14">
+          <p>EmailRoute.ts</p>
+        </File>
+      </Folder>
+      <Folder value="15" element="types">
+        <File value="16">
+          <p>User.ts</p>
+        </File>
+      </Folder>
+    </Folder>
+  </Tree>
+</div>
+**Front-end:**
+<div className="relative flex  bg-card/50 w-full flex-col items-center justify-center overflow-hidden rounded-lg border md:shadow-xl">
+  <Tree
+    className="overflow-hidden rounded-md bg-card/50 p-2"
+    initialSelectedId="1"
+    initialExpandedItems={["1"]}
+    elements={ELEMENTS}
+  >
+    <Folder element="mongate-front-end" value="1">
+      <Folder value="2" element="app" />
+      <Folder value="3" element="components" />
+      <Folder value="4" element="config" />
+      <Folder value="5" element="content" />
+      <Folder value="6" element="context" />
+      <Folder value="7" element="hooks" />
+      <Folder value="8" element="lib" />
+      <Folder value="9" element="public" />
+      <Folder value="10" element="types" />
+      <Folder value="11" element="utils" />
+      <File value="12">
+        <p>.env</p>
+      </File>
+      <File value="13">
+        <p>.gitignore</p>
+      </File>
+      <File value="14">
+        <p>components.json</p>
+      </File>
+      <File value="15">
+        <p>mdx-components.json</p>
+      </File>
+      <File value="16">
+        <p>next.config.mjs</p>
+      </File>
+      <File value="17">
+        <p>package-lock.json</p>
+      </File>
+      <File value="18">
+        <p>package.json</p>
+      </File>
+    </Folder>
+  </Tree>
+</div>
+
+---
+
+The back-end has been configured with the popular [Nodemon](https://www.bing.com/search?pglt=425&q=nodemon&cvid=fda15a3069484b99a2a02b413a0aa614&gs_lcrp=EgRlZGdlKgYIABBFGDkyBggAEEUYOdIBBzQ3N2owajGoAgCwAgA&FORM=ANNTA1&adppc=EDGEXST&PC=U531) extension to restart the server when changes are detected.
+You can start both development servers with
+
+```bash
+npm run dev
 ```
-export default function MDXPage({ children }) {
-  return <MdxLayout>{children}</MdxLayout>
 
+export default function MDXPage({ children }) {
+  return <MdxLayout>{children}</MdxLayout>;
 }

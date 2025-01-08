@@ -7,9 +7,63 @@ export const metadata = {
 
 import MdxLayout from "@/components/mdx/mdx-layout.tsx"
  
-# Enviornment Variables
+Set up your enviornment variables.
 
-Set up your enviornment variables
+## Back End
+
+Create a **.env** file in the root of the mongate-back-end directory.
+
+```bash
+MONGO_URI=mongodb://localhost:27000
+JWT_SECRET= < JWT Secret Here
+PORT=8080
+RESEND_API_KEY= < Resend API Key Here
+CORS_ORIGIN=http://localhost:3000
+NODE_ENV=development
+```
+
+### MONGO_URI
+
+To use MongoDB Atlas, you can sign up for a free account at [MongoDB Atlas](https://www.mongodb.com/cloud/atlas) or you can download MongoDB locally with their [community server](https://www.mongodb.com/try/download/community)
+
+### RESEND_API_KEY
+
+Resend is the mailing service. You can sign up for a free account and get your API key at [Resend](https://www.resend.io/)
+
+### PORT
+
+The port is set to 8080 by default. You can change this if you'd like.
+
+### JWT_SECRET
+
+You can also generate a JWT Secret easily online with [JWT.io](https://jwt.io/)
+
+### CORS_ORIGIN
+
+This is the URL of your front-end. The back-end will only accept requests from this URL with CORS.
+
+### NODE_ENV
+
+Leave this blank in development but in deployment set this to production, this allows you to use the production build of the app.
+
+You will also need to add these variables to wherever you decide to deploy your app.
+I personally reccomend using [Railway](https://railway.app/)
+
+---
+
+## Front-End
+
+Create a **.env** file in the root of the mongate-front-end directory.
+
+```bash
+NEXT_PUBLIC_BACK_END_URL=http://localhost:8080
+```
+
+### NEXT_PUBLIC_BACK_END_URL
+
+For the front end, you will need to set the URL of the back end. This is the URL that the front end will use to make requests to the back end.
+
+---
 
 export default function MDXPage({ children }) {
   return <MdxLayout>{children}</MdxLayout>
