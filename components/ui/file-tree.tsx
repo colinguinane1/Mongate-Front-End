@@ -201,6 +201,7 @@ const TreeIndicator = forwardRef<
 
 TreeIndicator.displayName = "TreeIndicator";
 
+// @ts-ignore
 interface FolderComponentProps
   extends React.ComponentPropsWithoutRef<typeof AccordionPrimitive.Item> {}
 
