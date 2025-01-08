@@ -4,7 +4,7 @@ import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import { UserProvider } from "@/context/UserContext";
 import { Toaster } from "sonner";
-import { Krub } from "next/font/google";
+import { Poppins } from "next/font/google";
 import Header from "@/components/ui/header";
 import { AppSidebar } from "@/components/app-sidebar";
 import { SidebarTrigger, SidebarProvider } from "@/components/ui/sidebar";
@@ -57,7 +57,7 @@ export const metadata: Metadata = {
 };
 
 // Import the Krub font with the desired settings
-const krub = Krub({
+const poppins = Poppins({
   subsets: ["latin"], // Specify subsets as needed
   weight: ["400", "700"], // Include the font weights you plan to use
   variable: "--font-krub", // Define a custom CSS variable name (optional)
@@ -78,7 +78,7 @@ export default function RootLayout({
             defaultTheme="dark"
           >
             <body
-              className={`antialiased  overflow-x-hidden   bg-background `}
+              className={`antialiased ${poppins.className}  overflow-x-hidden   bg-background `}
             >
               <div vaul-drawer-wrapper="">
                 <div className="bg-background overflow-x-hidden">
