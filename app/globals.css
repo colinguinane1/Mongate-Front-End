@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 body {
-  font-family: Krub, sans-serif;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
   transition: color 0.3s ease-in-out, background-color 0.3s ease-in-out;
 }
 .animation-delay-2000 {
