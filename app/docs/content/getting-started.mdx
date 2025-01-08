@@ -8,20 +8,9 @@ import MdxLayout from "@/components/mdx/mdx-layout.tsx";
 
 Welcome to **Mongate**, a template designed to help you quickly build web applications using MongoDB, Express.js, React (NEXT.JS), and Node.js. This template provides a ready-to-use setup with essential features like authentication, database integration, and API routing.
 
-## Prerequisites
+This guide assumes you already have Node.JS, a package manager of your choice, with a basic understanding of JavaScript and React.
 
-Before getting started, make sure you have the following installed on your system:
-
-- [Node.js](https://nodejs.org) (v16 or higher)
-- [npm](https://www.npmjs.com/) or [yarn](https://yarnpkg.com/)
-- [MongoDB](https://www.mongodb.com/try/download/community) 
-
-You can locally install MongoDB for development, but i reccomend [Atlas](https://www.mongodb.com/products/platform/atlas-database) for production
-
-## Features
-
-- **Backend**: A robust Express.js server with MongoDB as the database.
-- **Frontend**: React with Next.js.
+---
 
 ## 1. Clone the Repository
 
@@ -36,6 +25,7 @@ Backend:
 ```bash
 git clone https://github.com/colinguinane1/Mongate-Back-End.git
 ```
+---
 
 ## 2. Install Dependencies
 
@@ -51,6 +41,29 @@ Backend:
 ```bash
 cd Mongate-Back-End
 npm install
+```
+ 
+You should have an app structure like this: 
+
+```plaintext
+├── backend/                           # Backend (Express, Node.js, etc.)
+│   ├── api/                           # API folder
+│   │   └── index.ts                   # API entry point (main API setup)
+│   ├── controllers/                   # Controller files (e.g., business logic)
+│   │   ├── AuthController.ts          # Auth logic (login, signup, etc.)
+│   │   └── EmailController.ts         # Email-related logic (e.g., sending emails)
+│   ├── middleware/                    # Middleware (e.g., authentication)
+│   │   └── AuthenticateToken.ts       # Token verification middleware
+│   ├── models/                        # Mongoose models or data schemas
+│   │   └── UserModel.ts               # User model/schema for MongoDB
+│   ├── routes/                        # Routes for API endpoints
+│   │   ├── AuthRoute.ts               # Routes for authentication (login, signup, etc.)
+│   │   └── EmailRoute.ts              # Routes for email-related actions
+│   ├── types/                         # TypeScript types/interfaces
+│   │   └── User.ts                    # User types/interfaces (e.g., User schema, DTOs)
+│   └── .env                           # Environment variables (e.g., DB_URI, JWT_SECRET)
+├── package.json
+└── tsconfig.json           
 ```
 export default function MDXPage({ children }) {
   return <MdxLayout>{children}</MdxLayout>

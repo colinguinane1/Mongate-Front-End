@@ -1,21 +1,6 @@
 "use client";
-import {
-  Sidebar,
-  SidebarContent,
-  SidebarFooter,
-  SidebarGroup,
-  SidebarGroupContent,
-  SidebarGroupLabel,
-  SidebarHeader,
-  SidebarMenu,
-  SidebarMenuButton,
-  SidebarMenuItem,
-} from "@/components/ui/sidebar";
 import Link from "next/link";
 import { useIsMobile } from "@/hooks/is-mobile";
-import { usePathname } from "next/navigation";
-import { useUser } from "@/context/UserContext";
-import LogoutButton from "./LogOutButton";
 import { Button } from "./ui/button";
 import UserCard from "./UserCard";
 import { Doc } from "@/lib/gett-docs";
@@ -26,13 +11,9 @@ import { useState } from "react";
 
 export function AppSidebar({ docs }: { docs: Doc[] }) {
   const [open, setOpen] = useState(false);
-  const path = usePathname();
-  const { user } = useUser();
   if (!useIsMobile()) {
     return null;
   }
-
-  const currentDoc = path.split("/")[2];
 
   return (
     <Drawer open={open} onClose={() => setOpen(false)}>
@@ -51,14 +32,11 @@ export function AppSidebar({ docs }: { docs: Doc[] }) {
         </Button>
       </DrawerTrigger>
       <DrawerContent className="p-4 mt-10 pb-8">
-        <div className="flex flex-col pt-4">
+        <div className="flex flex-col gap-1 pt-4">
           {docs.map((doc) => (
             <Link
               key={doc.slug}
-              className={`${
-                currentDoc === doc.slug &&
-                "bg-primary/10 border-l-4 text-primary border-primary/20"
-              } hover:bg-primary/10 w-full p-1 px-2 rounded-lg text-base  transition-all`}
+              className={` hover:bg-primary/10 w-fit p-1 px-2 rounded-lg text-base  transition-all`}
               href={`/docs/${doc.slug}`}
             >
               <div>

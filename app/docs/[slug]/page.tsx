@@ -74,7 +74,9 @@ export default async function DocsPage(props: {
               </BreadcrumbItem>
               <BreadcrumbSeparator />
               <BreadcrumbItem>
-                <BreadcrumbLink href="/docs">Documentation</BreadcrumbLink>
+                <BreadcrumbLink href="/docs/getting-started">
+                  Documentation
+                </BreadcrumbLink>
               </BreadcrumbItem>
               <BreadcrumbSeparator />
               <BreadcrumbItem>
@@ -84,19 +86,14 @@ export default async function DocsPage(props: {
           </Breadcrumb>
         </div>
         <div className="">
-          <div className="p-4">
+          <div className="p-4 flex items-center justify-between">
+            <h1 className="text-3xl font-extrabold text-primary">
+              {selectedDoc.metadata.title}
+            </h1>{" "}
             <p className="text-sm text-gray-500 mt-2">
               <span className="font-medium">Published on:</span>{" "}
               {selectedDoc.metadata.publishDate}
             </p>
-            <p className="text-sm text-gray-500">
-              <span className="font-medium">Author:</span>{" "}
-              {selectedDoc.metadata.author}
-            </p>
-            <h1 className="text-3xl font-extrabold text-primary">
-              {selectedDoc.metadata.title}
-            </h1>
-            
           </div>
           <DocComponent />{" "}
           <div className="flex justify-between mt-8">
