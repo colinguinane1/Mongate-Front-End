@@ -78,7 +78,7 @@ export default function RootLayout({
             defaultTheme="dark"
           >
             <body
-              className={`antialiased  overflow-x-hidden   bg-background  ${krub.className}`}
+              className={`antialiased  overflow-x-hidden   bg-background `}
             >
               <div vaul-drawer-wrapper="">
                 <div className="bg-background overflow-x-hidden">
