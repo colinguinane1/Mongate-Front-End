@@ -69,7 +69,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${krub.variable} `}>
+    <html lang="en" className={``}>
       <SidebarProvider>
         <UserProvider>
           <ThemeProvider
