@@ -1,15 +1,33 @@
-import createMDX from '@next/mdx'
- 
+import rehypePrettyCode from "rehype-pretty-code";
+import nextMDX from "@next/mdx";
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   // Configure `pageExtensions` to include markdown and MDX files
   pageExtensions: ['js', 'jsx', 'md', 'mdx', 'ts', 'tsx'],
-  // Optionally, add any other Next.js config below
-}
- 
-const withMDX = createMDX({
-  // Add markdown plugins here, as desired
-})
- 
-// Merge MDX config with Next.js config
-export default withMDX(nextConfig)
+  // Any other Next.js config you need
+};
+
+/** @type {import('rehype-pretty-code').Options} */
+const options = {
+  theme: {
+    dark: "github-dark-dimmed",
+    light: "one-light",
+  },
+  keepBackground: false,
+  
+};
+
+// Use next-mdx with the options for rehypePrettyCode
+const withMDX = nextMDX({
+  extension: /\.mdx?$/,
+  options: {
+    remarkPlugins: [],
+    rehypePlugins: [
+      [rehypePrettyCode, options] // Correctly pass options to rehypePrettyCode
+    ],
+  },
+});
+
+// Export merged configuration
+export default withMDX(nextConfig);
