@@ -70,28 +70,26 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${lato.variable} `}>
-      <SidebarProvider>
-        <UserProvider>
-          <ThemeProvider
-            disableTransitionOnChange
-            attribute="class"
-            defaultTheme="dark"
+      <UserProvider>
+        <ThemeProvider
+          disableTransitionOnChange
+          attribute="class"
+          defaultTheme="dark"
+        >
+          <body
+            className={`antialiased  overflow-x-hidden   bg-background  ${lato.className}`}
           >
-            <body
-              className={`antialiased  overflow-x-hidden   bg-background  ${lato.className}`}
-            >
-              <div vaul-drawer-wrapper="">
-                <div className="bg-background overflow-x-hidden">
-                  <Header />
-                  <Toaster />
-                  <Analytics />
-                  {children}
-                </div>
+            <div vaul-drawer-wrapper="">
+              <div className="bg-background overflow-x-hidden">
+                <Header />
+                <Toaster />
+                <Analytics />
+                {children}
               </div>
-            </body>
-          </ThemeProvider>
-        </UserProvider>
-      </SidebarProvider>
+            </div>
+          </body>
+        </ThemeProvider>
+      </UserProvider>
     </html>
   );
 }
