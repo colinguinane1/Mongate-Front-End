@@ -16,8 +16,8 @@ export default function Header() {
   return (
     <header
       className={`flex transition-all duration-300 ${
-        isDocsPath ? "" : "p-4"
-      } items-center justify-center fixed  w-screen z-50`}
+        isDocsPath ? "" : "p-4 fixed"
+      } items-center justify-center   w-screen z-50`}
     >
       <div
         className={`backdrop-blur-[6px] z-50 p-2 max-w-6xl flex w-full ${
