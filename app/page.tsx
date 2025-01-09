@@ -15,8 +15,8 @@ export default function Home() {
           <WhyUseSection /> <TechStackSection />
         </div>
         <CirclePageDivider />
-        <div className="flex items-center justify-center">
-          <div className="w-screen flex items-center flex-col">
+        <div className="flex w-screen items-center justify-center">
+          <div className="p-4 flex justify-center items-center flex-col">
             <h1 className="font-extrabold text-4xl p-4">Getting Started</h1>
             <GettingStarted />
           </div>
