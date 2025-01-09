@@ -7,9 +7,70 @@ export const metadata = {
 
 import MdxLayout from "@/components/mdx/mdx-layout.tsx";
 
-Deployment
+# Front End Deployment
+
+There are many ways to deploy your front-end application. Here are a few options:
+
+## Vercel - (Reccomended)
+
+Vercel is a great option for deploying your front end. It is free and easy to use. You can deploy your front end with a few clicks.
+
+[Vercel](https://vercel.com/)
+
+## Netlify
+
+Netlify is another great option for deploying your front end. It is also free and easy to use. You can deploy your front end with a few clicks.
+
+[Netlify](https://www.netlify.com/)
+
+## AWS
+
+AWS is a more advanced option for deploying your front end. It is not free, but it is very powerful. You can deploy your front end with AWS Amplify or S3.
+
+[AWS](https://aws.amazon.com/)
+
+## Heroku
+
+Heroku is another option for deploying your front end. It is free and easy to use. You can deploy your front end with a few clicks.
+
+[Heroku](https://www.heroku.com/)
+
+---
+
+# Back End Deployment
+
+<Alert variant="destructive">
+  <AlertTitle>Warning</AlertTitle>
+  <AlertDescription>
+    There is a big difference for the back-end between a "Serverless" platform
+    and a "Server" platform. The current back-end does NOT work on Serverless
+    platforms such as Vercel. You will need to deploy your back-end on a server.
+  </AlertDescription>
+</Alert>
+
+Here are a few options for deploying your back end:
+
+## Railway - (Reccomended)
+
+Railway has a generous free tier. And if you decide to pay, its very affordable. You can deploy your back end with a few clicks.
+
+[Railway](https://railway.app/)
+
+## Heroku
+
+Heroku works for front-end and back-end
+
+[Heroku](https://www.heroku.com/)
+
+## AWS
+
+You can deploy your back end with AWS Amplify or EC2.
+
+[AWS](https://aws.amazon.com/)
+
+---
 
 export default function MDXPage({ children }) {
-  return <MdxLayout>{children}</MdxLayout>
+return <MdxLayout>{children}</MdxLayout>
 
 }

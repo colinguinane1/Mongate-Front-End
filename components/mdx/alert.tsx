@@ -1,4 +1,4 @@
-import { Alert } from "../ui/alert";
+import { Alert, AlertTitle, AlertDescription } from "../ui/alert";
 import { InfoIcon } from "lucide-react";
 
 export default function CustomAlert({
@@ -7,8 +7,8 @@ export default function CustomAlert({
   children: React.ReactNode;
 }) {
   return (
-    <Alert className="flex items-center gap-4">
-      <InfoIcon />
+    <Alert className=" text-base  gap-4">
+      <InfoIcon size={24} />
       <p>{children}</p>
     </Alert>
   );

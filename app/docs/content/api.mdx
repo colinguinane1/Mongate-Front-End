@@ -1,0 +1,57 @@
+export const metadata = {
+  order: 4,
+  title: "Using the API",
+  published: "2025-01-03",
+  author: "Colin",
+};
+
+import MdxLayout from "@/components/mdx/mdx-layout.tsx";
+
+For the front-end, I decided to use axios instead of JavaScript's built-in fetch API. I find axios to be more user-friendly and easier to use.
+Heres an example of how to fetch some data from the back-end using axios:
+
+I have pre-configured axios to use the Enviornment Variable BACKEND Url, and i wanted to display this in simple english, so i called it simply "api"
+
+So when you want to POST, you would write `api.post("/api/")`
+
+Heres an example of how to fetch some data from the back-end using axios:
+
+**example.tsx**
+
+```javascript
+import api from "@/utils/axios";
+import { useEffect, useState } from "react";
+
+const Example = () => {
+  const [data, setData] = useState(null);
+
+  useEffect(() => {
+    api
+      .get("/api/")
+      .then((res) => {
+        setData(res.data);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  }, []);
+
+  return (
+    <div>
+      {data ? (
+        <div>
+          <h1>{data.title}</h1>
+          <p>{data.body}</p>
+        </div>
+      ) : (
+        <p>Loading...</p>
+      )}
+    </div>
+  );
+};
+```
+
+export default function MDXPage({ children }) {
+return <MdxLayout>{children}</MdxLayout>
+
+}

@@ -14,33 +14,48 @@ Set up your enviornment variables.
 Create a **.env** file in the root of the mongate-back-end directory.
 
 ```bash
+//mongate-back-end/.env
 MONGO_URI=mongodb://localhost:27000
-JWT_SECRET= < JWT Secret Here
+JWT_SECRET=JWT_SECRET
 PORT=8080
-RESEND_API_KEY= < Resend API Key Here
+RESEND_API_KEY=RESEND_API_KEY
 CORS_ORIGIN=http://localhost:3000
 NODE_ENV=development
 ```
 
 ### MONGO_URI
 
-To use MongoDB Atlas, you can sign up for a free account at [MongoDB Atlas](https://www.mongodb.com/cloud/atlas) or you can download MongoDB locally with their [community server](https://www.mongodb.com/try/download/community)
-
-### RESEND_API_KEY
-
-Resend is the mailing service. You can sign up for a free account and get your API key at [Resend](https://www.resend.io/)
-
-### PORT
-
-The port is set to 8080 by default. You can change this if you'd like.
+This is the URI of your MongoDB database.
+You can get a MongoDB cluster from various places but the most popular is [MongoDB Atlas](https://www.mongodb.com/cloud/atlas) for production. For development you can download MongoDB locally with their [community server](https://www.mongodb.com/try/download/community) This allows you to work offline and more efficiently.
 
 ### JWT_SECRET
 
-You can also generate a JWT Secret easily online with [JWT.io](https://jwt.io/)
+JWT (Json Web Tokens) are used for authentication and password encryption.
+
+You can generate a JWT Secret yourself with an OpenSSL Terminal
+
+```bash
+openssl rand -base64 32
+```
+
+Or, you can generate a JWT Secret easily online with [JWT.io](https://jwt.io/)
+
+### PORT
+
+This is the port that the back end will run on.
+The port is set to 8080 by default. You can change this if you'd like.
+
+### RESEND_API_KEY
+
+Resend is the email service. You need your own domain to use it.
+
+I recconemd using [Namecheap](https://www.namecheap.com/) for your domain.
+
+You can sign up for a free account and get your API key at [Resend](https://resend.com/)
 
 ### CORS_ORIGIN
 
-This is the URL of your front-end. The back-end will only accept requests from this URL with CORS.
+This is the URL of your front-end. The back-end will only accept requests from this URL with CORS. This is located in `back-end/api/index.ts`
 
 ### NODE_ENV
 
@@ -56,6 +71,7 @@ I personally reccomend using [Railway](https://railway.app/)
 Create a **.env** file in the root of the mongate-front-end directory.
 
 ```bash
+//mongate-front-end/.env
 NEXT_PUBLIC_BACK_END_URL=http://localhost:8080
 ```
 

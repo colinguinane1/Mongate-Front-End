@@ -8,6 +8,17 @@ body {
 .animation-delay-2000 {
   animation-delay: 2s;
 }
+.anchor-link {
+  margin-right: 8px;
+  width: max-content;
+
+  text-decoration: none;
+  opacity: 0.6;
+  transition: opacity 0.2s ease-in-out;
+}
+.anchor-link:hover {
+  opacity: 1;
+}
 .animation-delay-4000 {
   animation-delay: 4s;
 }
@@ -27,11 +38,12 @@ body {
     --sidebar-ring: 217.2 91.2% 59.8%;
     --background: 0 0% 100%;
     --foreground: 240 10% 3.9%;
-    --card: 10 0% 95%;
+    --card: 10 0% 85%;
+    --codeCard: 10 0% 10%;
     --card-foreground: 240 10% 3.9%;
     --popover: 0 0% 100%;
     --popover-foreground: 240 10% 3.9%;
-    --primary: 88 66% 50%; /* HSL format */
+    --primary: 88 66% 40%; /* HSL format */
     --primary-foreground: 0 0% 98%;
     --secondary: 134 66% 24%; /* Converted to HSL */
     --secondary-foreground: 240 5.9% 10%;

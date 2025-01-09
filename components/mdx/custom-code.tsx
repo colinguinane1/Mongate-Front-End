@@ -21,18 +21,21 @@ const Code = (props: any, className: any) => {
 
   return (
     <div
-      className={cn("relative rounded-md  border bg-card/50 h-fit", className)}
+      className={cn(
+        "relative rounded-md  dark:bg-card/20 bg-foreground/95 p-2     h-fit",
+        className
+      )}
     >
       {/* Code block with copy button */}
       <div className="flex absolute right-2 top-[5px] justify-between items-center">
         <button
-          className="relative w-[2.25rem] h-[2.25rem] border bg-transparent backdrop-blur-lg flex items-center justify-center  rounded-md"
+          className="relative w-8 h-8 border bg-transparent backdrop-blur-lg flex items-center justify-center  rounded-md"
           onClick={handleCopy}
           aria-label={copied ? "Copied" : "Copy to clipboard"}
         >
           <span className="sr-only">{copied ? "Copied" : "Copy"}</span>
           <Clipboard
-            className={`h-4 w-4 transition-all duration-300 ${
+            className={`h-4 w-7 transition-all duration-300 ${
               copied ? "scale-0" : "scale-100"
             }`}
           />
@@ -44,15 +47,7 @@ const Code = (props: any, className: any) => {
         </button>
       </div>
 
-      {/* Styled pre block for code snippets */}
-      <pre
-        ref={codeRef}
-        className={`${
-          props.className || ""
-        } border-none h-fit p-4 overflow-auto`}
-      >
-        <code className="whitespace-pre">{props.children}</code>
-      </pre>
+      <code className="whitespace-pre 2">{props.children}</code>
     </div>
   );
 };

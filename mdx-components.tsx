@@ -1,4 +1,4 @@
-import CustomAlert from "./components/mdx/alert";
+import { Alert, AlertDescription, AlertTitle } from "./components/ui/alert";
 import Code from "./components/mdx/custom-code";
 import { ExternalLink } from "lucide-react";
 import type { MDXComponents } from "mdx/types";
@@ -7,9 +7,13 @@ import Pre from "./components/mdx/pre";
 
 export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
-    Alert: CustomAlert,
-    code: (props) => <Code className="py-4" {...props} />,
-    pre: (props) => <Pre className="py-4" {...props} />,
+    Alert: (props) => <Alert className="text-base" {...props} />,
+    AlertTitle: (props) => <AlertTitle className="text-lg" {...props} />,
+    AlertDescription: (props) => (
+      <AlertDescription className="text-base" {...props} />
+    ),
+    code: (props) => <code className="  p-2  rounded-lg" {...props} />,
+    pre: (props) => <Code className="py-4" {...props} />,
     h1: (props) => <h1 className="text-4xl py-4 font-black " {...props} />,
     h2: (props) => <h2 className="text-3xl py-4 font-bold" {...props} />,
     h3: (props) => <h3 className="text-2xl py-4 font-semibold" {...props} />,

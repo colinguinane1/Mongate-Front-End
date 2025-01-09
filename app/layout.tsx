@@ -10,6 +10,7 @@ import { AppSidebar } from "@/components/app-sidebar";
 import { SidebarTrigger, SidebarProvider } from "@/components/ui/sidebar";
 import { siteConfig } from "@/config/site";
 import { Analytics } from "@vercel/analytics/react";
+import Footer from "@/components/ui/footer";
 
 export const metadata: Metadata = {
   title: {
@@ -85,6 +86,7 @@ export default function RootLayout({
                 <Toaster />
                 <Analytics />
                 {children}
+                <Footer />
               </div>
             </div>
           </body>
