@@ -53,7 +53,7 @@ export default async function DocsPage(props: {
                 className={`${
                   doc.slug === slug &&
                   "bg-primary/10 border-l-4 text-primary border-primary/20"
-                } hover:bg-primary/10 w-full  transition-all`}
+                } hover:bg-primary/10 w-full text-start flex items-start  transition-all`}
                 href={`/docs/${doc.slug}`}
               >
                 <div>
@@ -86,12 +86,12 @@ export default async function DocsPage(props: {
           </Breadcrumb>
         </div>
         <div className="">
-          <div className="p-4 flex items-center justify-between">
+          <div className="p-4 flex  flex-col">
             <h1 className="text-3xl font-extrabold text-primary">
               {selectedDoc.metadata.title}
             </h1>{" "}
             <p className="text-sm text-gray-500 mt-2">
-              <span className="font-medium">Published on:</span>{" "}
+              <span className="font-medium">Last edit:</span>{" "}
               {selectedDoc.metadata.publishDate}
             </p>
           </div>

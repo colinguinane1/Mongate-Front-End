@@ -4,7 +4,7 @@ import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import { UserProvider } from "@/context/UserContext";
 import { Toaster } from "sonner";
-import { Krub } from "next/font/google";
+import { Lato } from "next/font/google";
 import Header from "@/components/ui/header";
 import { AppSidebar } from "@/components/app-sidebar";
 import { SidebarTrigger, SidebarProvider } from "@/components/ui/sidebar";
@@ -57,7 +57,7 @@ export const metadata: Metadata = {
 };
 
 // Import the Krub font with the desired settings
-const krub = Krub({
+const lato = Lato({
   subsets: ["latin"], // Specify subsets as needed
   weight: ["400", "700"], // Include the font weights you plan to use
   variable: "--font-krub", // Define a custom CSS variable name (optional)
@@ -69,7 +69,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${krub.variable} `}>
+    <html lang="en" className={`${lato.variable} `}>
       <SidebarProvider>
         <UserProvider>
           <ThemeProvider
@@ -78,7 +78,7 @@ export default function RootLayout({
             defaultTheme="dark"
           >
             <body
-              className={`antialiased  overflow-x-hidden   bg-background  ${krub.className}`}
+              className={`antialiased  overflow-x-hidden   bg-background  ${lato.className}`}
             >
               <div vaul-drawer-wrapper="">
                 <div className="bg-background overflow-x-hidden">

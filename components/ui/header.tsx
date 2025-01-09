@@ -24,7 +24,7 @@ export default function Header() {
           isDocsPath ? "border-b rounded-2xl" : "border rounded-lg"
         } justify-between motion-preset-blur-down-lg items-center `}
       >
-        <Link href="/">
+        <Link href="/" className="flex items-center gap-2">
           <p className="font-extrabold flex items-center">
             <Image
               alt="logo"
@@ -34,6 +34,9 @@ export default function Header() {
               src="/icon-1.png"
             ></Image>
             Mongate {isDocsPath && <p className="font-light pl-1">Docs</p>}
+          </p>
+          <p className="text-xs bg-secondary/50 p-1 px-2 rounded-lg border border-secondary text-primary/80">
+            BETA
           </p>
         </Link>
 
