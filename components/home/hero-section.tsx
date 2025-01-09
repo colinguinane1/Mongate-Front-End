@@ -32,7 +32,7 @@ export default function HeroSection() {
               includes User Authentication
             </p>
             <div className="flex gap-4 md:flex-row z-[30] flex-col">
-              <Link href={user ? "/account" : "/login"}>
+              <Link href={"/account"}>
                 {" "}
                 <CAnimatedButton>{user ? "Account" : "Login"} </CAnimatedButton>
               </Link>
