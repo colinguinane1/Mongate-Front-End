@@ -239,9 +239,9 @@ You should have an app structure like this:
 
 **Back-end:**
 
-<div className="relative flex  bg-card/50 w-full flex-col items-center justify-center overflow-hidden rounded-lg border md:shadow-xl">
+<div className="relative flex  w-full flex-col items-center justify-center overflow-hidden rounded-lg ">
   <Tree
-    className="overflow-hidden rounded-md bg-card/50 p-2"
+    className="overflow-hidden rounded-md dark:bg-card/20 bg-foreground/95  p-2"
     initialSelectedId="1"
     initialExpandedItems={["1"]}
     elements={backELEMENTS}
@@ -287,9 +287,9 @@ You should have an app structure like this:
   </Tree>
 </div>
 **Front-end:**
-<div className="relative flex  bg-card/50 w-full flex-col items-center justify-center overflow-hidden rounded-lg border md:shadow-xl">
+<div className="relative flex  w-full flex-col items-center justify-center overflow-hidden rounded-lg ">
   <Tree
-    className="overflow-hidden rounded-md bg-card/50 p-2"
+    className="overflow-hidden rounded-md dark:bg-card/20 bg-foreground/95  p-2"
     initialSelectedId="1"
     initialExpandedItems={["1"]}
     elements={ELEMENTS}

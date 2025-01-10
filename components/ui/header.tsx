@@ -35,7 +35,7 @@ export default function Header() {
             ></Image>
             Mongate {isDocsPath && <p className="font-light pl-1">Docs</p>}
           </p>
-          <p className="text-xs bg-secondary/50 p-1 px-2 rounded-lg border dark:border-secondary text-primary dark:text-primary/80">
+          <p className="text-xs bg-secondary/80 dark:bg-secondary/20 p-1 px-2 rounded-lg border dark:border-secondary text-primary dark:text-primary/80">
             BETA
           </p>
         </Link>

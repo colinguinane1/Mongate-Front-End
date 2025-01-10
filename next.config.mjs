@@ -8,7 +8,7 @@ const nextConfig = {
 
 /** @type {import('rehype-pretty-code').Options} */
 const options = {
-  theme: "aurora-x",
+  theme: "solarized-dark",
   keepBackground: true,
 };
 
