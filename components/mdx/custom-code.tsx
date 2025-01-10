@@ -20,39 +20,43 @@ const Code = (props: any, className: any) => {
   };
 
   return (
-  <div
-    className={cn(
-      "relative rounded-md dark:bg-card/20 bg-foreground/95 p-2 overflow-y-auto max-h-[350px]",
-      className
-    )}
-  >
-    {/* Code block with copy button */}
-    <div className="sticky top-2 right-2 flex justify-between items-center">
-      <button
-        className="relative w-8 h-8 border bg-transparent backdrop-blur-lg flex items-center justify-center rounded-md"
-        onClick={handleCopy}
-        aria-label={copied ? "Copied" : "Copy to clipboard"}
+    <div
+      className={cn(
+        "relative rounded-md dark:bg-card/20 bg-foreground/95 p-2 overflow-y-auto max-h-[350px]",
+        className
+      )}
+    >
+      <div className="flex absolute right-2 top-[5px] justify-between items-center">
+        <button
+          type="button"
+          className="text-gray-300 bg-transparent border rounded-md backdrop-blur-md p-2 hover:text-input"
+          onClick={handleCopy}
+        >
+          <Clipboard
+            color={"white"}
+            className={`h-4 w-4 transition-all duration-300 ${
+              copied ? "scale-0" : "scale-100"
+            }`}
+          />
+          <Check
+            className={`absolute inset-0 text-primary m-auto h-4 w-4 transition-all duration-300 ${
+              copied ? "scale-100" : "scale-0"
+            }`}
+          />
+        </button>
+      </div>
+      {/* Styled pre block for code snippets */}
+      <pre
+        ref={codeRef}
+        className={`${
+          props.className || ""
+        } border-none h-fit p-4 text-xs overflow-auto`}
       >
-        <span className="sr-only">{copied ? "Copied" : "Copy"}</span>
-        <Clipboard
-          color={"white"}
-          className={`h-4 w-7 transition-all duration-300 ${
-            copied ? "scale-0" : "scale-100"
-          }`}
-        />
-        <Check
-          className={`absolute inset-0 text-primary m-auto h-4 w-4 transition-all duration-300 ${
-            copied ? "scale-100" : "scale-0"
-          }`}
-        />
-      </button>
+        {/* Render the code without applying inline code styles */}
+        <code className="whitespace-pre">{props.children}</code>
+      </pre>
     </div>
-
-    <code ref={codeRef} className="whitespace-pre">
-      {props.children}
-    </code>
-  </div>
-);
+  );
 };
 
 export default Code;
