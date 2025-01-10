@@ -50,7 +50,7 @@ const Code = (props: any, className: any) => {
         ref={codeRef}
         className={`${
           props.className || ""
-        } border-none h-fit p-4 text-xs overflow-auto`}
+        } border-none h-fit text-sm overflow-auto`}
       >
         {/* Render the code without applying inline code styles */}
         <code className="whitespace-pre">{props.children}</code>
