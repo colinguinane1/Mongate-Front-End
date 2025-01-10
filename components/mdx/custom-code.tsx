@@ -27,7 +27,7 @@ const Code = (props: any, className: any) => {
       )}
     >
       {/* Code block with copy button */}
-      <div className="flex absolute right-2 top-[5px]  justify-between items-center">
+      <div className="flex fixed right-2 top-2 right-2 justify-between items-center">
         <button
           className="relative w-8 h-8 border bg-transparent backdrop-blur-lg flex items-center justify-center  rounded-md"
           onClick={handleCopy}
