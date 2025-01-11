@@ -26,7 +26,8 @@ const Code = (props: any, className: any) => {
         className
       )}
     >
-      <div className="flex absolute right-2 top-[5px] justify-between items-center">
+      <div className="flex sticky   top-[5px] justify-between items-center">
+        <div></div>
         <button
           type="button"
           className="text-gray-300 bg-transparent border rounded-md backdrop-blur-md p-2 hover:text-input"
@@ -50,7 +51,7 @@ const Code = (props: any, className: any) => {
         ref={codeRef}
         className={`${
           props.className || ""
-        } border-none h-fit text-sm overflow-auto`}
+        } border-none h-fit -mt-8 text-sm overflow-auto`}
       >
         {/* Render the code without applying inline code styles */}
         <code className="whitespace-pre">{props.children}</code>

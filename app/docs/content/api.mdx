@@ -7,11 +7,14 @@ export const metadata = {
 
 import MdxLayout from "@/components/mdx/mdx-layout.tsx";
 
-For the front-end, I decided to use [Axios](https://axios-http.com/docs/intro) instead of JavaScript's built-in fetch API. I find axios to be more user-friendly and easier to use.
+For the front-end, I decided to use [Axios](https://axios-http.com/docs/intro) instead of JavaScript's built-in fetch API. I find Axios to be more user-friendly and easier to use.
 
-I have pre-configured axios to use the Enviornment Variable BACKEND Url, and i wanted to display this in simple english, so i called it simply "api"
+I have pre-configured axios in `/utils/axios.ts` to automatically use the BACK_END_URL, and if a token is present to automatically include that token in any request header.
 
-So when you want to POST, you would write `api.post("/api/")`
+I renamed this function 'api' so its sounds more like plain English.
+
+So when you want to POST, you would write `api.post("/api/", {body})`
+or when you want to GET, you would write `api.get("/api/")`
 
 Heres an example of how to fetch some data from the back-end using axios:
 
