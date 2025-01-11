@@ -13,7 +13,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
       <AlertDescription className="text-base" {...props} />
     ),
     code: (props) => <code className="  p-2  rounded-lg" {...props} />,
-    pre: (props) => <Code className="py-4" {...props} />,
+    pre: (props) => <Code className="" {...props} />,
     h1: (props) => <h1 className="text-4xl py-4 font-black " {...props} />,
     h2: (props) => <h2 className="text-3xl py-4 font-bold" {...props} />,
     h3: (props) => <h3 className="text-2xl py-4 font-semibold" {...props} />,
