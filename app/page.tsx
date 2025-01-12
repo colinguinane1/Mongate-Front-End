@@ -3,7 +3,8 @@ import TechStackSection from "@/components/home/tech-stack";
 import WhyUseSection from "@/components/home/features";
 import HowDoesItWork from "@/components/home/how-does-it-work";
 import CirclePageDivider from "@/components/home/circle-page-divider";
-import GettingStarted from "../app/docs/content/getting-started.mdx";
+import GettingStartedShort from "@/app/getting-started-short.mdx";
+import Pricing from "@/components/home/pricing";
 
 export default function Home() {
   return (
@@ -16,13 +17,14 @@ export default function Home() {
         </div>
         <CirclePageDivider />
         <div className="flex w-screen items-center justify-center">
-          <div className="p-4">
+          <div className="p-4 flex items-center justify-center flex-col">
             <h1 className="font-extrabold text-4xl p-4">Getting Started</h1>
-            <div className="w-screen">
-              <GettingStarted />
-            </div>
+            <div className="w-screen md:w-fit">
+              <GettingStartedShort />
+            </div>{" "}
           </div>
-        </div>
+        </div>{" "}
+        <Pricing />
       </div>
     </div>
   );
