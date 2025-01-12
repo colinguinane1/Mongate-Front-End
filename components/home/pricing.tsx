@@ -53,7 +53,7 @@ export default function Pricing() {
         <span className="bg-gradient-to-r text-3xl font-bold from-foreground to-foreground/45 bg-clip-text text-transparent">
           Pricing
         </span>
-        <div className="grid  grid-cols-3 gap-4">
+        <div className="grid  grid-cols-1 md:grid-cols-3 gap-4">
           {techStack.map((tech, idx) => (
             <div
               key={idx}
