@@ -87,7 +87,7 @@ export default function Pricing() {
 
                   <p className="grid grid-cols-1 gap-2">
                     {tech.perks.map((perk) => (
-                      <div className="flex items-center gap-2">
+                      <div key={perk} className="flex items-center gap-2">
                         <Check />
                         {perk}
                       </div>
