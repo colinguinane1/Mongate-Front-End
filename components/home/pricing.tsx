@@ -33,13 +33,14 @@ export default function Pricing() {
     {
       name: "Pro",
       tag: "Coming Soon...",
-      pricing: "$10",
+      pricing: "$--",
       description: "Powered by Resend, all you need is an API Key.",
       perks: [
-        "Postgres Support",
-        "Password Encryption",
-        "User Management",
-        "Frontend w/Docs",
+        "PostgreSQL Support",
+        "Admin Dashboard",
+        "CRUD API Routes",
+        "STRIPE Integration",
+        "& More...",
       ],
       button: (
         <Link href="/account">
@@ -62,9 +63,9 @@ export default function Pricing() {
               key={idx}
               className={`${
                 idx === 1
-                  ? "bg- shadow-primary/10 border border-primary/20"
+                  ? "bg- shadow-primary/50 shadow-md  border border-primary/20"
                   : ""
-              }  relative p-10 w-full h-full flex flex-col gap-4 border-foreground/30  border items-center justify-center rounded-lg shadow-lg   overflow-hidden`}
+              }  relative p-10 w-full h-full flex flex-col gap-4 border-foreground/30  border items-center justify-center rounded-lg   overflow-hidden`}
             >
               {idx === 1 && (
                 <BorderTrail
