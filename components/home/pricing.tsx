@@ -8,6 +8,7 @@ import { CiCircleCheck } from "react-icons/ci";
 import { InView } from "../ui/in-view";
 import { Check } from "lucide-react";
 import { Button } from "../ui/button";
+import Link from "next/link";
 
 export default function Pricing() {
   const techStack = [
@@ -21,30 +22,32 @@ export default function Pricing() {
         "User Management",
         "Frontend w/Docs",
       ],
+      button: (
+        <Link href="/docs/getting-started">
+          <Button className="w-full" variant={"outline"}>
+            Get Started
+          </Button>
+        </Link>
+      ),
     },
     {
       name: "Pro",
-      tag: "Popular",
+      tag: "Coming Soon...",
       pricing: "$10",
       description: "Powered by Resend, all you need is an API Key.",
       perks: [
-        "Email Verification",
+        "Postgres Support",
         "Password Encryption",
         "User Management",
         "Frontend w/Docs",
       ],
-    },
-
-    {
-      name: "Custom",
-      pricing: "Contact Us",
-      description: "Let's chat and see how I can help you.",
-      perks: [
-        "Email Verification",
-        "Password Encryption",
-        "User Management",
-        "Frontend w/Docs",
-      ],
+      button: (
+        <Link href="/account">
+          <Button className="w-full" variant={"default"}>
+            Click to show interest!
+          </Button>
+        </Link>
+      ),
     },
   ];
   return (
@@ -53,7 +56,7 @@ export default function Pricing() {
         <span className="bg-gradient-to-r text-3xl font-bold from-foreground to-foreground/45 bg-clip-text text-transparent">
           Pricing
         </span>
-        <div className="grid  grid-cols-1 w-screen p-4 md:grid-cols-3 gap-4">
+        <div className="grid  grid-cols-1 w-screen md:w-fit  p-4 md:grid-cols-2 gap-4">
           {techStack.map((tech, idx) => (
             <div
               key={idx}
@@ -76,7 +79,11 @@ export default function Pricing() {
                     {tech.tag}
                   </p>
                 )}
-                <h1 className="font-bold pt-4 text-center text-2xl">
+                <h1
+                  className={`font-bold pt-4 text-center text-2xl ${
+                    idx === 1 ? "text-primary" : "text-foreground/50"
+                  }`}
+                >
                   {tech.name}
                 </h1>
                 <p>{tech.pricing}</p>
@@ -90,9 +97,7 @@ export default function Pricing() {
                   </div>
                 ))}
               </p>
-              <Button variant={idx === 1 ? "default" : "outline"}>
-                See More
-              </Button>
+              {tech.button}
             </div>
           ))}
         </div>
