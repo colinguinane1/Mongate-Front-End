@@ -53,7 +53,7 @@ export default function Pricing() {
         <span className="bg-gradient-to-r text-3xl font-bold from-foreground to-foreground/45 bg-clip-text text-transparent">
           Pricing
         </span>
-        <div className="grid  grid-cols-1 md:grid-cols-3 gap-4">
+        <div className="grid  grid-cols-1 w-screen p-4 md:grid-cols-3 gap-4">
           {techStack.map((tech, idx) => (
             <div
               key={idx}
@@ -61,7 +61,7 @@ export default function Pricing() {
                 idx === 1
                   ? "bg- shadow-primary/10 border border-primary/20"
                   : ""
-              }  relative p-10 h-full flex flex-col gap-4 border-foreground/30  border items-center justify-center rounded-lg shadow-lg   overflow-hidden`}
+              }  relative p-10 w-full h-full flex flex-col gap-4 border-foreground/30  border items-center justify-center rounded-lg shadow-lg   overflow-hidden`}
             >
               {idx === 1 && (
                 <BorderTrail
@@ -90,7 +90,9 @@ export default function Pricing() {
                   </div>
                 ))}
               </p>
-              <Button variant={"outline"}>See More</Button>
+              <Button variant={idx === 1 ? "default" : "outline"}>
+                See More
+              </Button>
             </div>
           ))}
         </div>
