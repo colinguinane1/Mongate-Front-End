@@ -44,8 +44,8 @@ export default function Pricing() {
       ],
       button: (
         <Link href="/account">
-          <Button className="w-full" variant={"default"}>
-            Click to show interest!
+          <Button className="w-full" disabled variant={"default"}>
+            Coming Soon...
           </Button>
         </Link>
       ),

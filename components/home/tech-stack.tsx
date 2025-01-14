@@ -6,6 +6,7 @@ import { BorderTrail } from "../ui/border-trail";
 import { RiNextjsFill } from "react-icons/ri";
 import { SiResend } from "react-icons/si";
 import { InView } from "../ui/in-view";
+import { InfiniteSlider } from "../ui/infinite-slider";
 
 export default function TechStackSection() {
   const techStack = [
@@ -41,18 +42,13 @@ export default function TechStackSection() {
         <span className="bg-gradient-to-r text-3xl font-bold from-primary to-accent bg-clip-text text-transparent">
           Powered By
         </span>
-        <div className="grid grid-cols-2 md:grid-cols-4 grid-rows-2 z-[-1]  gap-4 p-4 ">
+
+        <InfiniteSlider>
           {techStack.map((tech, idx) => (
             <div
               key={idx}
-              className="bg-primary/10 relative z-[-1] p-10 h-full flex flex-col gap-4 items-center justify-center rounded-lg shadow-lg shadow-primary/10 border  border-primary/30"
+              className="relative z-[-1] p-10 h-full flex flex-col gap-4 items-center justify-center "
             >
-              {/* <BorderTrail
-                    className="bg-gradient-to-l opacity-20 from-foreground via-accent to-secondary "
-                    delay={idx * 0.5}
-                    size={100}
-                  /> */}
-              <div className="absolute w-8  h-8 bg-foreground rounded-full mix-blend-multiply filter blur-3xl"></div>
               <div className="flex flex-col items-center justify-center">
                 {tech.icon}
                 <h1 className="font-bold pt-4 text-center text-2xl">
@@ -61,7 +57,7 @@ export default function TechStackSection() {
               </div>
             </div>
           ))}
-        </div>
+        </InfiniteSlider>
       </div>
     </div>
   );
