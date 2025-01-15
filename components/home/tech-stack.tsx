@@ -12,29 +12,29 @@ export default function TechStackSection() {
   const techStack = [
     {
       name: "Node.JS",
-      icon: <FaNodeJs color="green" className="w-16 h-16" />,
+      icon: <FaNodeJs color="green" className="w-8 h-8" />,
       description: "Unify your development with one programming language.",
     },
     {
       name: "Next.JS",
-      icon: <RiNextjsFill color="gray" className="w-16 h-16" />,
+      icon: <RiNextjsFill color="gray" className="w-8 h-8" />,
       description: "The industry standard for web and mobile development.",
     },
     {
       name: "MongoDB",
-      icon: <DiMongodb color="green" className="w-16 h-16" />,
+      icon: <DiMongodb color="green" className="w-8 h-8" />,
       description: "Javascript for the web.",
     },
     {
       name: "Express",
-      icon: <SiExpress className="w-16 h-16" />,
+      icon: <SiExpress className="w-8 h-8" />,
       description: "RESTful API development made easy.",
     },
     {
       name: "Docker",
-      icon: <FaDocker color="cyan" className="w-16 h-16" />,
+      icon: <FaDocker color="cyan" className="w-8 h-8" />,
     },
-    { name: "Resend", icon: <SiResend className="w-16 h-16" /> },
+    { name: "Resend", icon: <SiResend className="w-8 h-8" /> },
   ];
   return (
     <div className="grid place-content-center w-screen ">
@@ -47,13 +47,11 @@ export default function TechStackSection() {
           {techStack.map((tech, idx) => (
             <div
               key={idx}
-              className="relative z-[-1] p-10 h-full flex flex-col gap-4 items-center justify-center "
+              className="relative z-[-1] p-10 h-full w-fit flex flex-col gap-4 items-center justify-center "
             >
               <div className="flex flex-col items-center justify-center">
                 {tech.icon}
-                <h1 className="font-bold pt-4 text-center text-2xl">
-                  {tech.name}
-                </h1>
+                <h1 className="font-bold pt-4 text-center">{tech.name}</h1>
               </div>
             </div>
           ))}

@@ -67,12 +67,12 @@ export default function Pricing() {
                   : ""
               }  relative p-10 w-full h-full flex flex-col gap-4 border-foreground/30  border items-center justify-center rounded-lg   overflow-hidden`}
             >
-              {idx === 1 && (
+              {/* {idx === 1 && (
                 <BorderTrail
                   className="bg-gradient-to-l opacity-20 from-foreground  to-primary "
                   size={200}
                 />
-              )}
+              )} */}
 
               <div className="flex flex-col items-center justify-center relative z-10">
                 {tech.tag && (
