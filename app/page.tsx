@@ -1,7 +1,6 @@
 import HeroSection from "@/components/home/hero-section";
 import TechStackSection from "@/components/home/tech-stack";
 import WhyUseSection from "@/components/home/features";
-import HowDoesItWork from "@/components/home/how-does-it-work";
 import CirclePageDivider from "@/components/home/circle-page-divider";
 import GettingStartedShort from "@/app/getting-started-short.mdx";
 import Pricing from "@/components/home/pricing";
