@@ -80,16 +80,16 @@ export default function AccountSettings({ user }: AccountSettingsProps) {
           ></Input>
         </div>
 
-        {/* <div>
+        <div>
           <Label htmlFor="username">Password</Label>
           <Input
             onChange={(e) => setChangePassword(e.target.value)}
             id="password"
             type="text"
-            placeholder="Change Password"
+            placeholder="******"
             value={changePassword}
           ></Input>
-        </div> */}
+        </div>
       </div>
       <div className="flex justify-between w-full items-center">
         {formChanged && (
