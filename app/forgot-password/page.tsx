@@ -10,7 +10,7 @@ import {InputOTP, InputOTPGroup, InputOTPSlot} from "@/components/ui/input-otp";
 import {useRouter} from "next/navigation";
 
 export default function ForgotPassword() {
-    const [tokenExpiry, setTokenExpiry] = useState<string | number | Date>(localStorage.getItem("tokenExpiry") || "");
+    const [tokenExpiry, setTokenExpiry] = useState<string | number | Date>("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [timeRemaining, setTimeRemaining] = useState("");
@@ -18,9 +18,14 @@ export default function ForgotPassword() {
     const router = useRouter();
 
     useEffect(() => {
-        setEmail(localStorage.getItem("email") || "");
-        const interval = setInterval(() => {
+        if (typeof window !== "undefined") {
+            setEmail(localStorage.getItem("email") || "");
+            setTokenExpiry(localStorage.getItem("tokenExpiry") || "");
+        }
+    }, []);
 
+    useEffect(() => {
+        const interval = setInterval(() => {
             const currentTime = new Date().getTime();
             const expiry = new Date(tokenExpiry).getTime();
             const timeDiff = expiry - currentTime;
@@ -31,7 +36,9 @@ export default function ForgotPassword() {
                 setTimeRemaining(`${minutes}m ${seconds}s`);
             } else {
                 setTimeRemaining("Expired");
-                localStorage.removeItem("tokenExpiry");
+                if (typeof window !== "undefined") {
+                    localStorage.removeItem("tokenExpiry");
+                }
                 setTokenExpiry("");
                 clearInterval(interval);
             }
@@ -48,13 +55,14 @@ export default function ForgotPassword() {
             toast.error("No user data in response");
         }
         const expiry = response.data.tokenExpiry;
-        localStorage.setItem("tokenExpiry", expiry);
-        localStorage.setItem("email", email);
+        if (typeof window !== "undefined") {
+            localStorage.setItem("tokenExpiry", expiry);
+            localStorage.setItem("email", email);
+        }
         setTokenExpiry(expiry);
     }
 
     const handleVerifyCode = async (e: React.FormEvent) => {
-
         e.preventDefault();
         try {
             const response = await api.post("/api/email/verify-password-code", {email, code, newPassword: password});
@@ -70,8 +78,10 @@ export default function ForgotPassword() {
                 setEmail("");
                 setPassword("");
                 setCode("");
-                localStorage.removeItem("tokenExpiry");
-                localStorage.removeItem("email");
+                if (typeof window !== "undefined") {
+                    localStorage.removeItem("tokenExpiry");
+                    localStorage.removeItem("email");
+                }
                 setTokenExpiry("");
                 router.push("/forgot-password/success")
             }
@@ -83,7 +93,6 @@ export default function ForgotPassword() {
                 toast.error("An unexpected error occurred.");
             }
         }
-
     }
 
     return (
@@ -125,7 +134,7 @@ export default function ForgotPassword() {
                         <Button variant={"outline"}>Verify Code</Button>
                     </div>
                 </form>
-           }
+            }
         </div>
     )
 }
