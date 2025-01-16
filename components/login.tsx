@@ -8,6 +8,7 @@ import Loading from "./ui/loading";
 import { AxiosError } from "axios";
 import { useUser } from "@/context/UserContext";
 import { useEffect } from "react";
+import Link from "next/link";
 
 export default function Login() {
   const [formLogin, setFormLogin] = useState(true);
@@ -109,7 +110,9 @@ export default function Login() {
               {formLogin ? "Register" : "Login"}
             </Button>
           </p>
-          {/* {formLogin && <p>Forgot Password</p>} */}
+          {formLogin &&
+              <Link className={`hover:text-primary hover:underline`} href={`/forgot-password`}><p>Forgot Password?</p>
+              </Link>}
         </div>
         <Button
           type="submit"

@@ -7,15 +7,20 @@ import api from "@/utils/axios";
 import {toast} from "sonner";
 import {AxiosError} from "axios";
 import {InputOTP, InputOTPGroup, InputOTPSlot} from "@/components/ui/input-otp";
+import {useRouter} from "next/navigation";
 
 export default function ForgotPassword() {
     const [tokenExpiry, setTokenExpiry] = useState<string | number | Date>(localStorage.getItem("tokenExpiry") || "");
     const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
     const [timeRemaining, setTimeRemaining] = useState("");
     const [code, setCode] = useState("");
+    const router = useRouter();
 
     useEffect(() => {
+        setEmail(localStorage.getItem("email") || "");
         const interval = setInterval(() => {
+
             const currentTime = new Date().getTime();
             const expiry = new Date(tokenExpiry).getTime();
             const timeDiff = expiry - currentTime;
@@ -26,6 +31,8 @@ export default function ForgotPassword() {
                 setTimeRemaining(`${minutes}m ${seconds}s`);
             } else {
                 setTimeRemaining("Expired");
+                localStorage.removeItem("tokenExpiry");
+                setTokenExpiry("");
                 clearInterval(interval);
             }
         }, 1000);
@@ -42,6 +49,7 @@ export default function ForgotPassword() {
         }
         const expiry = response.data.tokenExpiry;
         localStorage.setItem("tokenExpiry", expiry);
+        localStorage.setItem("email", email);
         setTokenExpiry(expiry);
     }
 
@@ -49,7 +57,7 @@ export default function ForgotPassword() {
 
         e.preventDefault();
         try {
-            const response = await api.post("/api/email/verify-password-code", {email, code});
+            const response = await api.post("/api/email/verify-password-code", {email, code, newPassword: password});
             if (!response) {
                 toast.error("No response data");
                 return;
@@ -57,6 +65,15 @@ export default function ForgotPassword() {
             if (response.data.error) {
                 toast.error(response.data.error);
                 return;
+            }
+            if (response.status === 200) {
+                setEmail("");
+                setPassword("");
+                setCode("");
+                localStorage.removeItem("tokenExpiry");
+                localStorage.removeItem("email");
+                setTokenExpiry("");
+                router.push("/forgot-password/success")
             }
             toast.success(response.data.message)
         } catch (error) {
@@ -90,7 +107,10 @@ export default function ForgotPassword() {
                     className="flex flex-col space-y-4 mt-10 border border-primary/20 rounded-lg p-4  gap-2"
                     onSubmit={handleVerifyCode}
                 ><p>Token expires in {timeRemaining} </p>
-                    <p>Enter Verification Code:</p>
+                    <div><Label>New Password</Label><Input required minLength={6} value={password}
+                                                           onChange={(e) => setPassword(e.target.value)}
+                                                           type={"password"} placeholder={"*****"}/></div>
+                    <p>Email Verification Code:</p>
                     <div className="flex items-center gap-2 w-full">
                         <InputOTP maxLength={6} onChange={(code) => setCode(code)}>
                             <InputOTPGroup>
