@@ -24,8 +24,8 @@ const UserCard: React.FC<UserCardProps> = ({ user }) => {
 
   return (
     <div className="flex items-center  relative  w-full max-w-2xl  p-4 rounded-xl gap-4">
-      <Avatar className="w-6 h-6 z-0 relative">
-        <AvatarFallback className="w-6 h-6 text-xs">
+      <Avatar className="w-20 h-20 z-0 relative">
+        <AvatarFallback className="w-20 h-20 text-xl">
           {user.username.slice(0, 2).toUpperCase()}
         </AvatarFallback>
       </Avatar>{" "}

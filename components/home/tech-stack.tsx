@@ -47,11 +47,11 @@ export default function TechStackSection() {
           {techStack.map((tech, idx) => (
             <div
               key={idx}
-              className="relative z-[-1] p-10 h-full w-fit flex flex-col gap-4 items-center justify-center "
+              className="relative z-[-1] p-4 h-full w-fit flex flex-col gap-4 items-center justify-center "
             >
               <div className="flex flex-col items-center justify-center">
                 {tech.icon}
-                <h1 className="font-bold pt-4 text-center">{tech.name}</h1>
+                <h1 className="font-bold pt-4 text-foreground/50 text-center">{tech.name}</h1>
               </div>
             </div>
           ))}
