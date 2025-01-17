@@ -8,10 +8,12 @@ import {toast} from "sonner";
 import {AxiosError} from "axios";
 import {InputOTP, InputOTPGroup, InputOTPSlot} from "@/components/ui/input-otp";
 import {useRouter} from "next/navigation";
+import Loading from "@/components/ui/loading";
 
 export default function ForgotPassword() {
     const [tokenExpiry, setTokenExpiry] = useState<string | number | Date>("");
     const [email, setEmail] = useState("");
+    const [loading, setLoading] = useState(false);
     const [password, setPassword] = useState("");
     const [timeRemaining, setTimeRemaining] = useState("");
     const [code, setCode] = useState("");
@@ -48,22 +50,37 @@ export default function ForgotPassword() {
     }, [tokenExpiry]);
 
     const handleSubmit = async (e: React.FormEvent) => {
+
         e.preventDefault();
-        toast.success("If an account exists with this email, we sent you a code.");
-        const response = await api.post("/api/email/forgot-password", {email});
-        if (!response) {
-            toast.error("No user data in response");
+        setLoading(true)
+
+        try {
+            const response = await api.post("/api/email/forgot-password", {email});
+            if (!response) {
+                toast.error("No user data in response");
+            }
+            const expiry = response.data.tokenExpiry;
+            if (typeof window !== "undefined") {
+                localStorage.setItem("tokenExpiry", expiry);
+                localStorage.setItem("email", email);
+            }
+            setTokenExpiry(expiry);
+            toast.success("If an account exists with this email, we sent you a code.");
+        } catch (error) {
+            if (error instanceof AxiosError && error.response) {
+                toast.error(error.response.data.message);
+            } else {
+                toast.error("An unexpected error occurred.");
+            }
+        } finally {
+            setLoading(false);
         }
-        const expiry = response.data.tokenExpiry;
-        if (typeof window !== "undefined") {
-            localStorage.setItem("tokenExpiry", expiry);
-            localStorage.setItem("email", email);
-        }
-        setTokenExpiry(expiry);
+
     }
 
     const handleVerifyCode = async (e: React.FormEvent) => {
         e.preventDefault();
+        setLoading(true)
         try {
             const response = await api.post("/api/email/verify-password-code", {email, code, newPassword: password});
             if (!response) {
@@ -86,18 +103,44 @@ export default function ForgotPassword() {
                 router.push("/forgot-password/success")
             }
             toast.success(response.data.message)
+
         } catch (error) {
             if (error instanceof AxiosError && error.response) {
                 toast.error(error.response.data.message);
             } else {
                 toast.error("An unexpected error occurred.");
             }
+        } finally {
+            setLoading(false)
         }
     }
 
     return (
         <div className={`grid place-content-center w-screen h-screen`}>
-            <form onSubmit={handleSubmit} >
+            {tokenExpiry ? (<form
+                className="flex flex-col space-y-4 mt-10 w-80 border border-primary/20 rounded-lg p-4  gap-2"
+                onSubmit={handleVerifyCode}
+            ><p>Token expires in {timeRemaining} </p>
+                <div><Label>New Password</Label><Input required minLength={6} value={password}
+                                                       onChange={(e) => setPassword(e.target.value)}
+                                                       type={"password"} placeholder={"*****"}/></div>
+                <p>Email Verification Code:</p>
+                <div className="flex items-center gap-2 w-full">
+                    <InputOTP maxLength={6} onChange={(code) => setCode(code)}>
+                        <InputOTPGroup>
+                            <InputOTPSlot index={0}></InputOTPSlot>
+                            <InputOTPSlot index={1}></InputOTPSlot>
+                            <InputOTPSlot index={2}></InputOTPSlot>
+                            <InputOTPSlot index={3}></InputOTPSlot>
+                            <InputOTPSlot index={4}></InputOTPSlot>
+                            <InputOTPSlot index={5}></InputOTPSlot>
+                        </InputOTPGroup>
+                    </InputOTP>
+
+                </div>
+                <Button variant={"outline"} disabled={loading} type={"submit"}>Change Password {loading &&
+                    <Loading/>}</Button>
+            </form>) : (<form className={` flex  flex-col gap-4 w-80`} onSubmit={handleSubmit}>
                 <div className={`space-y-4`}>
                     <h1 className={`text-2xl font-extrabold`}>Forgot Password</h1>
                     <p>Enter your email to reset your password</p>
@@ -107,34 +150,13 @@ export default function ForgotPassword() {
                         <Input required type={"email"} value={email} onChange={(e) => setEmail(e.target.value)}
                                placeholder={"Enter your email.."}/>
                     </div>
-                    <Button type={"submit"}>Send Code</Button>
+                    <Button variant={"outline"} disabled={loading} type={"submit"}>Send Code {loading &&
+                        <Loading/>}</Button>
 
                 </div>
-            </form>
-            {tokenExpiry &&
-                <form
-                    className="flex flex-col space-y-4 mt-10 border border-primary/20 rounded-lg p-4  gap-2"
-                    onSubmit={handleVerifyCode}
-                ><p>Token expires in {timeRemaining} </p>
-                    <div><Label>New Password</Label><Input required minLength={6} value={password}
-                                                           onChange={(e) => setPassword(e.target.value)}
-                                                           type={"password"} placeholder={"*****"}/></div>
-                    <p>Email Verification Code:</p>
-                    <div className="flex items-center gap-2 w-full">
-                        <InputOTP maxLength={6} onChange={(code) => setCode(code)}>
-                            <InputOTPGroup>
-                                <InputOTPSlot index={0}></InputOTPSlot>
-                                <InputOTPSlot index={1}></InputOTPSlot>
-                                <InputOTPSlot index={2}></InputOTPSlot>
-                                <InputOTPSlot index={3}></InputOTPSlot>
-                                <InputOTPSlot index={4}></InputOTPSlot>
-                                <InputOTPSlot index={5}></InputOTPSlot>
-                            </InputOTPGroup>
-                        </InputOTP>
-                        <Button variant={"outline"}>Verify Code</Button>
-                    </div>
-                </form>
-            }
+            </form>)}
+
+
         </div>
     )
 }

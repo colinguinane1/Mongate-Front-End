@@ -12,29 +12,29 @@ export default function TechStackSection() {
   const techStack = [
     {
       name: "Node.JS",
-      icon: <FaNodeJs color="green" className="w-8 h-8" />,
+      icon: <FaNodeJs color="green" className="w-8 h-8 md:w-16 md:h-16"/>,
       description: "Unify your development with one programming language.",
     },
     {
       name: "Next.JS",
-      icon: <RiNextjsFill color="gray" className="w-8 h-8" />,
+      icon: <RiNextjsFill color="gray" className="w-8 h-8 md:w-16 md:h-16"/>,
       description: "The industry standard for web and mobile development.",
     },
     {
       name: "MongoDB",
-      icon: <DiMongodb color="green" className="w-8 h-8" />,
+      icon: <DiMongodb color="green" className="w-8 h-8 md:w-16 md:h-16"/>,
       description: "Javascript for the web.",
     },
     {
       name: "Express",
-      icon: <SiExpress className="w-8 h-8" />,
+      icon: <SiExpress className="w-8 h-8 md:w-16 md:h-16"/>,
       description: "RESTful API development made easy.",
     },
     {
       name: "Docker",
-      icon: <FaDocker color="cyan" className="w-8 h-8" />,
+      icon: <FaDocker color="cyan" className="w-8 h-8 md:w-16 md:h-16"/>,
     },
-    { name: "Resend", icon: <SiResend className="w-8 h-8" /> },
+    {name: "Resend", icon: <SiResend className="w-8 h-8 md:w-16 md:h-16"/>},
   ];
   return (
     <div className="grid place-content-center w-screen ">
@@ -47,7 +47,7 @@ export default function TechStackSection() {
           {techStack.map((tech, idx) => (
             <div
               key={idx}
-              className="relative z-[-1] p-4 h-full w-fit flex flex-col gap-4 items-center justify-center "
+              className="relative z-[-1] p-4 md:p-8 h-full w-fit flex flex-col gap-4 items-center justify-center "
             >
               <div className="flex flex-col items-center justify-center">
                 {tech.icon}

@@ -5,6 +5,8 @@ import CAnimatedButtonOutline from "../ui/c-animated-button-outline";
 import Link from "next/link";
 import { useUser } from "@/context/UserContext";
 import FadeInSection from "../fade-in";
+import {Button} from "@/components/ui/button";
+import {ChevronRight} from "lucide-react";
 
 export default function HeroSection() {
   const { user } = useUser();
@@ -31,14 +33,15 @@ export default function HeroSection() {
               Try our pre-built solution for the popular MERN stack, which
               includes User Authentication
             </p>
-            <div className="flex gap-4 md:flex-row z-[30] flex-col">
+            <div className="flex gap-4 w-1/2 md:flex-row z-[30] flex-col">
               <Link href={"/account"}>
                 {" "}
-                <CAnimatedButton>{user ? "Account" : "Login"} </CAnimatedButton>
+                <Button className={`w-full`}>{user ? "Account" : "Login"} </Button>
               </Link>
               <Link href="/docs/getting-started">
                 {" "}
-                <CAnimatedButtonOutline>Docs</CAnimatedButtonOutline>
+                <Button variant={"outline"} className={`w-full flex items-center gap-0`}>Docs <ChevronRight
+                    className={`mt-[2px]`}/></Button>
               </Link>
             </div>
           </div>
