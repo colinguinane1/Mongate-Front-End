@@ -40,7 +40,7 @@ export default function HeroSection() {
               </Link>
               <Link href="/docs/getting-started">
                 {" "}
-                <Button variant={"outline"} className={`w-full flex items-center gap-0`}>Docs <ChevronRight
+                <Button variant={"ghostMuted"} className={`w-full flex items-center gap-0`}>Documentation <ChevronRight
                     className={`mt-[2px]`}/></Button>
               </Link>
             </div>

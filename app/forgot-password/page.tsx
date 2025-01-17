@@ -100,7 +100,7 @@ export default function ForgotPassword() {
                     localStorage.removeItem("email");
                 }
                 setTokenExpiry("");
-                router.push("/forgot-password/success")
+                router.push("/account")
             }
             toast.success(response.data.message)
 
