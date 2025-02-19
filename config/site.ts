@@ -1,11 +1,16 @@
 export const siteConfig = {
-  name: "Mongate",
-  url: "https://mongate.vercel.app",
-  ogImage: "https://mongate.vercel.app/icon.png ",
+  name: "nFlow",
+  url: "https://nflow.vercel.app",
+  ogImage: "https://nflow.vercel.app/icon.png ",
   description:
-    " A template for the popular MERN stack. It is a full-stack template that includes a front-end and back-end. The front-end is built with Next.js and Tailwind CSS, and the back-end is built with Express.js and MongoDB.",
+    "An AI Gmail client that helps you manage your inbox and keep track of your tasks.",
   links: {
-    github: "https://github.com/colinguinane1/Mongate-Front-End",
+    github: "https://github.com/colinguinane1/nFlow",
+  },
+  version: {
+    front: "0.1.0",
+    back: "0.1.0",
+    state: "alpha",
   },
 };
 

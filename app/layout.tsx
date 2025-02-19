@@ -85,7 +85,8 @@ export default function RootLayout({
                 <Header />
                 <Toaster />
                 <Analytics />
-                {children}
+                <div className="min-h-screen mt-20"> {children}</div>
+
                 <Footer />
               </div>
             </div>
